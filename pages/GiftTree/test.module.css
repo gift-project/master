@@ -1,0 +1,9 @@
+
+.Gift{
+  background-color: red;
+  width: 200px;
+}
+.Gift:nth-child(even){
+  border-radius:50%;
+}
+  
