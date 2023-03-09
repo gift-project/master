@@ -5,9 +5,3 @@
 .Gift:nth-child(even) {
   border-radius: 50%;
 }
-
-.main {
-  width: 600px;
-  height: 100vh;
-  background-image: url("/public/img/backgImg.png");
-}
