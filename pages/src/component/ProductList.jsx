@@ -24,6 +24,7 @@ const ProductList = () => {
         title:"생일선물ㅇㅇㅇㅇㅇㅇㅇ",
         lprice:"12500원"}
     ]);
+    //ver222<-push
 
 
   
