@@ -6,7 +6,7 @@ export default function handler(req, res) {
 
   const selectData = async () => {
     try {
-      let data = await executeQuery('select * from teamDbList order by id DESC', []);
+      let data = await executeQuery('select * from UserList order by UserID DESC', []);
       res.json(data)
     } catch (err) {
       res.send(err);
