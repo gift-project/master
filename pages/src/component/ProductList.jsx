@@ -112,6 +112,10 @@ const ProductList = () => {
           setThenApi();          
         }
 
+        const [sqlGift, setSqlGift] = useState();
+  const [sqlFriends, setFriendList] = useState();
+  console.log(sqlGift, sqlFriends, '???')
+
 
   return (
     <div style={{width:"100%",height:"100vh",padding:"120px 0 100px",  position:"relative"}}>
@@ -119,6 +123,26 @@ const ProductList = () => {
      {/* 카테고리, 카테리고리 검색 보여주는곳 */}
   <div style={{position:"relative",margin:"4%"}}>
   선물 트리공간
+
+  <button onClick={() => {
+          axios.get('/api/gift')
+            .then(res => setSqlGift(res.data))
+        }}>Sql.GiftList 접근</button>
+
+        <button onClick={() => {
+          axios.get('/api/friends')
+            .then(res => setFriendList(res.data))
+        }}>Sql.FriendsList 접근</button>
+        {/* sql데이터 기반 화면에 뿌려보기 */}
+        {sqlGift?.map((obj, idx) => {
+          return <article key={idx}>
+            <img src={obj.image} style={{ width: "100px", height: "100px" }} />
+            <strong> {obj.title}</strong>
+            <span>{obj.price}</span>
+          </article>
+        })}
+        <hr />
+        {sqlFriends?.map((obj, idx) => { return <div key={idx}>{obj.NickName}</div> })}
     {/* 트리공간에 선물 뿌리기 */}
     {Give && Give.map((obj)=>{
       return(
