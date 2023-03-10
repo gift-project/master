@@ -144,7 +144,7 @@ const ProductList = () => {
           padding: "10px", // 내부 여백 조정
           fontSize: "16px", // 폰트 크기 조정
           width: "400px", // 너비 조정
-          height: "50px", // 높이 조정
+          height: "50px", 
           margin: "20px" 
           }} 
         />
