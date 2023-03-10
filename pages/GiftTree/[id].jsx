@@ -48,9 +48,12 @@ const GiftTree = () => {
             </form>
             </div>
           </div>
+            
         </div>
-      <ProductList />
-      <NavBar />
+      <ProductList />  
+      
+      <NavBar />  
+
     </div>
   )
 }
