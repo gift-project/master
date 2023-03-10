@@ -3,11 +3,15 @@ import axios from 'axios';
 
 import { TeamC } from '../Context';
 
+
+// 카테고리 페이지
+
+
 const ProductList = () => {
 
     const [visible,setVisible] = useState(false);
 
-    const maxLength = 10; // 문자열 길이 설정
+    const maxLength = 10; // 문자열 길이 설정 (title)
 
     const arr = ["생일", "결혼", "환갑", "응원", "합격"]
 
@@ -15,7 +19,11 @@ const ProductList = () => {
     const [thenApi, setThenApi] = useState();
 
     // 사러가기 클릭 -> 트리공간에 뿌려주기
-    const [Give,SetGive] = useState([]);
+    const [Give,SetGive] = useState([
+      {image:"https://shopping-phinf.pstatic.net/main_3752711/37527114044.20230130140516.jpg",
+        title:"생일선물ㅇㅇㅇㅇㅇㅇㅇ",
+        lprice:"12500원"}
+    ]);
 
 
   
@@ -96,6 +104,7 @@ const ProductList = () => {
         }
   
         const giveTo = (obj)=>{
+
           let value = {image:obj.image,title:obj.title,lprice:obj.lprice}
     
           SetGive([...Give, value])
@@ -133,24 +142,37 @@ const ProductList = () => {
           타이틀 텍스트 한줄로 줄이기 
           
       */}
-    <div style={{border:"4px solid black", borderRadius:"5px",background:"#F2F2F2",width:"100%",height:"70vh",position:"absolute",top:0,left:0,display:visible?"block":"none",overflow:"auto"}}>
+    <div style={{ 
+      background:"#fff", width:"100%",height:"70vh",position:"absolute",top:0,left:0,display:visible?"block":"none",overflow:"auto", boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", borderRadius: "10px", padding: "20px"
+      }}>
       <article style={{display:"flex",justifyContent:"space-around"}}>
       {/* <h3>쇼핑카트</h3> */}
-        <form onSubmit={ (e)=>{searchCg(e)} }>
+        <form onSubmit={ (e)=>{searchCg(e)} } style={{transform:"translateY(-11px)"}}>
         <input 
+
+          color='#000'
           type="text" 
+          placeholder='원하는 품목을 찾아보세요.'
+
           style={{ 
-          borderRadius: "10px", // 라디우스 조정
-          padding: "10px", // 내부 여백 조정
-          fontSize: "16px", // 폰트 크기 조정
-          width: "400px", // 너비 조정
-          height: "50px", 
-          margin: "20px" 
-          }} 
+            height: "50px", 
+            margin: "20px",
+            borderRadius: "10px", // 라디우스 조정
+            fontSize: "14px", // 폰트 크기 조정
+            width: "265px", // 너비 조정
+            border: "none", // 검은색 보더 제거
+            outline: "none", // 클릭 시 파란색 아웃라인 제거
+            padding: "10px", // 내부 여백 조정
+
+            background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+            }}
+
+        
         />
         <button type='submit'
            style={{
-            backgroundColor: "#219bc3",
+            backgroundColor: "#b2d3e1",
             border: "none",
             color: "white",
             padding: "15px 20px;",
@@ -159,28 +181,76 @@ const ProductList = () => {
             display: "inline-block",
             fontSize: "16px",
             borderRadius: "10px",
-            cursor: "pointer"
-          }}
+            cursor: "pointer",
+            width: "71px",
+            height: "50px",
+
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+            }}
         
         >검색</button>
         </form>
       </article>
 
-        <ul style={{display:"flex", listStyle:"none", padding:"2%", justifyContent:"space-around", alignItems:"center"}}>
-
+        <ul style={{
+           display: "flex",
+           listStyle: "none",
+           paddingBottom:"5%",
+           justifyContent: "space-around",
+           alignItems: "center",
+           background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
+           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+           borderRadius: "16px", // 라운드 처리
+          // display:"flex", listStyle:"none", padding:"2%", justifyContent:"space-around", alignItems:"center"
+          }}>
+        
+        {/* 배열에 넣어둔 카테고리 목록 노출 */}
         {arr.map((obj,idx)=>{
-            return <li onClick={ ()=>{GetApi(obj)} } style={{border:"1px solid coral", width:60,height:60,margin:"1.5%", textAlign:"center",alignItems:"center", borderRadius:"50%" }} 
-            key={idx}> <figure> <img src={`/img/${obj}.jpg`} style={{width:45}}/> <figcaption>{obj}</figcaption> </figure> </li>
+            return <li onClick={ ()=>{GetApi(obj)} } 
+            style={{
+              fontfamily: "Neo3, sans-serif",backgroundColor:"#b2d3e1",width:58,height:58,margin:"1.5%", textAlign:"center",alignItems:"center", borderRadius:"50%",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
+            }} 
+            key={idx}> 
+            <figure style={{overflow:"hidden"}}>
+            <img src={`/img/${obj}.jpg`}
+            style={{
+              width: "58px",
+              height: "58px",
+              objectFit:"cover",
+              borderRadius: "50%"
+            }}/>  </figure> <span>{obj}</span> </li>
         })}
         </ul>
-
+        
+        {/* 카테고리 클릭시 나오는 아이템목록 */}
         <div style={{width:"100%", display:"flex", flexWrap:"wrap",padding:"10%"}}>
           {thenApi && thenApi.map((obj, idx)=>{
-            return <figure key={idx} style={{width:"50%"}}>
-            <img src={obj.image} style={{ width:"50%"}} />
-                <figcaption style={{width:"100%"}}>
-                <span>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "")}</span>
-                <span>{obj.lprice}</span>
+            return <figure key={idx}
+            style={{
+              width: "calc(50% - 1%)",
+              background: "#fff",
+              boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.16), 0px 4px 16px rgba(0, 0, 0, 0.08)",
+              borderRadius: "5px",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+              margin: "0.5%",
+              }}>
+                {/* width:50 */}
+            <img src={obj.image} style={{ width:"100%"}} />
+                <figcaption
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexGrow: "1",
+                  }}>
+                <span style={{fontfamily: "Neo3, sans-serif"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
+                <p>{obj.lprice}원</p>
                 <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}>
               자세히보기</button>                
             <button onClick={ ()=>{giveTo(obj)} }>선물하기</button>
