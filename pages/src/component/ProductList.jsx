@@ -266,7 +266,7 @@ const ProductList = () => {
               margin: "0.5%",
               }}>
                 {/* width:50 */}
-            <img src={obj.image} style={{ width:"100%"}} />
+            <img src={obj.image} style={{ width:"100%"}} alt="product" />
                 <figcaption
                 style={{
                   width: "100%",
@@ -279,10 +279,38 @@ const ProductList = () => {
                   }}>
                 <span style={{fontfamily: "Neo3, sans-serif"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
                 <p>{obj.lprice}원</p>
-                <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}>
-              자세히보기</button>                
-            <button onClick={ ()=>{giveTo(obj)} }>선물하기</button>
-                    </figcaption>            
+                <div
+                style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
+                }}
+                >
+                <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}
+                style={{
+                  background: "#007AFF",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  padding: "10px",
+                  cursor: "pointer",
+                  margin: "5px",
+                }}>
+                자세히보기</button>                
+                 <button onClick={ ()=>{giveTo(obj)} }
+                 style={{
+                  background: "#9DC88D",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  padding: "10px",
+                  cursor: "pointer",
+                  margin: "5px",
+                 }}
+                 >선물하기</button>
+                </div>
+              </figcaption>            
             </figure>
           })
           }
