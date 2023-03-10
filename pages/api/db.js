@@ -9,8 +9,6 @@ const cors = require('cors')
 
 // app.use(cors(corsOptions))
 
-
-
 const pool = createPool({
     host: 'svc.sel3.cloudtype.app',
     user: 'root',

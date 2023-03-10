@@ -3,7 +3,11 @@ export const TeamC = createContext(null)
 
 
 const Context = ({ children }) => {
-    return (<TeamC.Provider value={{}}>
+
+    const MyID = 2;
+
+
+    return (<TeamC.Provider value={{ MyID }}>
         {children}
     </TeamC.Provider>)
 }
