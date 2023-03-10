@@ -259,7 +259,7 @@ const ProductList = () => {
         })}
         </ul>
         
-        {/* 카테고리 클릭시 나오는 아이템목록 */}
+        {/* 카테고리 클릭시 나오는 아이템목록22222 */}
         <div style={{width:"100%", display:"flex", flexWrap:"wrap",padding:"10%"}}>
           {thenApi && thenApi.map((obj, idx)=>{
             return <figure key={idx}
@@ -287,7 +287,7 @@ const ProductList = () => {
                   }}>
                 <span style={{fontfamily: "Neo3, sans-serif"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
                 <p>{obj.lprice}원</p>
-<<<<<<< HEAD
+
                 <div
                 style={{
                 display: "flex",
@@ -319,13 +319,11 @@ const ProductList = () => {
                  }}
                  >선물하기</button>
                 </div>
-              </figcaption>            
-=======
+              </figcaption>
                 <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}>
               자세히보기</button>                
             <button onClick={ ()=>{addToGift(obj)} }>위시리스트담기</button>
-                    </figcaption>            
->>>>>>> 6b9e5173eb61b0b6291b1ae164ec5fc8390b7fd9
+                    
             </figure>
           })
           }
