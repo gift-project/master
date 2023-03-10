@@ -6,6 +6,56 @@
   /* background-color: rgba(0, 0, 0, 0.7); */
 }
 
+@font-face {
+  font-family: 'Neo1';
+  src: url('../public/font/NanumSquareNeoTTF-aLt.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neo2';
+  src: url('../public/font/NanumSquareNeoTTF-bRg.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neo3';
+  src: url('../public/font/NanumSquareNeoTTF-cBd.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neo4';
+  src: url('../public/font/NanumSquareNeoTTF-dEb.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neo5';
+  src: url('../public/font/NanumSquareNeoTTF-eHv.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+span{
+  font-family: 'Neo4';
+  font-size: 16px;
+}
+
+p{
+  font-family: 'Neo3';
+  color: #999999;
+  font-size: 14px;
+}
+button{
+  font-family: 'Neo3';
+}
+
+
+body{
+  /* background-color:lightsteelblue; */
+  background-color:#b2d3e1;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
