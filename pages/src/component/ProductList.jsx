@@ -2,6 +2,7 @@ import React,{useState,useContext,useEffect,useRef} from 'react'
 import axios from 'axios';
 
 import { TeamC } from '../Context';
+import { MyLocationRounded } from '@mui/icons-material';
 
 
 // 카테고리 페이지
@@ -31,7 +32,8 @@ const ProductList = () => {
 
 
   
-    const {WishList} = useContext(TeamC);
+    const {MyID} = useContext(TeamC);
+    console.log(MyID,'??')
 
     const [bottom, setBottom] = useState(null);
     const botObs = useRef(null);
@@ -107,7 +109,13 @@ const ProductList = () => {
           console.log(e.target[0].value)
         }
   
-        const giveTo = (obj)=>{
+        const addToGift = (obj)=>{
+
+          axios.post('/api/gift',{UserID:MyID
+            ,title:obj.title
+            ,image:obj.image
+            ,price:obj.lprice
+            ,state:0})
 
           let value = {image:obj.image,title:obj.title,lprice:obj.lprice}
     
@@ -281,7 +289,7 @@ const ProductList = () => {
                 <p>{obj.lprice}원</p>
                 <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}>
               자세히보기</button>                
-            <button onClick={ ()=>{giveTo(obj)} }>선물하기</button>
+            <button onClick={ ()=>{addToGift(obj)} }>위시리스트담기</button>
                     </figcaption>            
             </figure>
           })

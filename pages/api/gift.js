@@ -17,7 +17,7 @@ export default function handler(req, res) {
         let { UserID, title, image, price, state } = body;
 
         let data = await executeQuery(
-            'insert into teamDbProductList (UserID,title,image,price,state) value (?,?,?,?,?)',
+            'insert into GiftList (UserID,title,image,price,state) value (?,?,?,?,?)',
             // 0 : true / 1 : false // true(1)면 선물완료니까 기본값으로 false(0)
             [UserID, title, image, price, state]
         );
