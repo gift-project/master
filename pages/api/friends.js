@@ -2,11 +2,15 @@ import { executeQuery } from './db';
 
 export default function handler(req, res) {
     // DESC(내림차순), ASC(오름차순)
-    const { method, body } = req;
+    const { method, body, query } = req;
 
     const selectFriendsData = async () => {
+        let { userLogin } = query;
+        console.log(userLogin, '???')
+        // get과 delete요청은 body가 없으므로, params로 받아야한다.
         try {
-            let data = await executeQuery('select * from FriendsList where UserID=10 order by UserID DESC', []);
+            let data = await executeQuery(
+                'select * from FriendsList where UserID=? order by UserID DESC', [userLogin]);
             res.json(data)
         } catch (err) {
             res.send(err);
@@ -15,6 +19,7 @@ export default function handler(req, res) {
 
     const insertFriendsData = async () => {
         let { UserID, title, image, price, state } = body;
+        console.log(UserID, '친구추가 post')
 
         let data = await executeQuery(
             'insert into teamDbProductList (UserID,title,image,price,state) value (?,?,?,?,?)',

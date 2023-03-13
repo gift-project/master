@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="free-sticker-rubber-duck-4861674.png" />
       </Head>
       <main>
+
         <Component {...pageProps} />
       </main>
       <NavBar />
