@@ -4,6 +4,7 @@ import axios from 'axios';
 import { TeamC } from '../Context';
 import { MyLocationRounded } from '@mui/icons-material';
 import { width } from '@mui/system';
+import { useRouter } from 'next/router';
 
 
 // 카테고리 페이지
@@ -12,6 +13,8 @@ import { width } from '@mui/system';
 const ProductList = () => {
 
     const [visible,setVisible] = useState(false);
+    const router = useRouter();
+    console.log(router.query.id)
 
     const maxLength = 12; // 문자열 길이 설정 (title)
 
@@ -21,11 +24,7 @@ const ProductList = () => {
     const [thenApi, setThenApi] = useState();
 
     // 사러가기 클릭 -> 트리공간에 뿌려주기
-    const [Give,SetGive] = useState([
-      {image:"https://shopping-phinf.pstatic.net/main_3752711/37527114044.20230130140516.jpg",
-        title:"생일선물ㅇㅇㅇㅇㅇㅇㅇ",
-        lprice:"12500원"}
-    ]);
+    const [Give,SetGive] = useState([]);
     {console.log(Give ,"기브기브기브")}
 
     //ver222<-push
@@ -34,9 +33,8 @@ const ProductList = () => {
 
 
   
-    const {MyID,userLogin, setUserLogin} = useContext(TeamC);
+    const {userLogin, setUserLogin} = useContext(TeamC);
     console.log(userLogin,'??')
-    console.log(MyID,'???')
 
     const [bottom, setBottom] = useState(null);
     const botObs = useRef(null);
@@ -99,9 +97,20 @@ const ProductList = () => {
              [visible] )
   
         useEffect(() => {
-          console.log(thenApi?.[0]?.category1)
-          console.log(thenApi)
-        }, [thenApi]);
+          // 위시리스트
+          axios.get('/api/gift',{params:{userLogin:router.query.id}}).then(
+            res=>
+            SetGive(res.data))
+            //console.log(res.data)
+
+
+
+            // 친구리스트
+            // axios.get('/api/friends',{params:{userLogin:router.query.id}}).then(
+            //   res=>console.log(res.data))
+    
+        
+        }, [router.query.id]);
 
         console.log(visible,'비져블')
     
@@ -122,9 +131,6 @@ const ProductList = () => {
             ,price:obj.lprice
             ,state:0})
 
-          let value = {image:obj.image,title:obj.title,lprice:obj.lprice}
-    
-          SetGive([...Give, value])
           setVisible(!visible)
           setThenApi();
         }
@@ -145,12 +151,14 @@ const ProductList = () => {
   선물 트리공간
 
   <button onClick={() => {
-    axios.get('/api/gift',{params:{userLogin:userLogin}}).then(
-      res=>console.log(res.data)
+    axios.get('/api/gift',{params:{userLogin:router.query.id}}).then(
+      res=>
+      SetGive(res.data)
+      //console.log(res.data)
   )}}>Sql.GiftList 접근</button>
 
         <button onClick={() => {
-           axios.get('/api/friends',{params:{userLogin:userLogin}}).then(
+           axios.get('/api/friends',{params:{userLogin:router.query.id}}).then(
             res=>console.log(res.data)
   )}}>Sql.FriendsList 접근</button>
 
@@ -166,17 +174,19 @@ const ProductList = () => {
         {sqlFriends?.map((obj, idx) => { return <div key={"TestB"+idx}>{obj.NickName}</div> })} */}
 
     {/* 트리공간에 선물 뿌리기 */}
+    <div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
     {Give && Give?.map((obj,idx)=>{
-      return(
-        
-      <article key={"Tree"+idx} style={{width:"50%", height:"50px"}}>
-      <img src={obj.image} style={{width:"100%", height:"200px"}}/>
+      return(        
+      <article key={"Tree"+idx} style={{width:"50%"}}>
+      <img src={obj.image} style={{ width:"167px", height:"177px", paddingBottom:"10px" ,borderRadius:"10px"}}/>
       <strong> {obj.title}</strong>
       <span>{obj.lprice}</span>
+      <button onClick={()=>{console.log(obj)}}>{obj.UserID == userLogin?"삭제하기":"선물하기"}</button>
       </article>
       
       )
     })}
+    </div>
     
     <div style={{ 
       background:"#f9e9ee", width:"100%",height:"70vh",position:"absolute",top:0,left:0,display:visible?"block":"none",overflow:"auto", boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", borderRadius: "10px", padding: "20px"

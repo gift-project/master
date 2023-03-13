@@ -25,15 +25,13 @@ const GiftTree = () => {
   const [friendList, setFriendList] = useState();
   const searchInput = useRef(null)
 
-    async function dataGet() {
-        const res = await axios.get(`/api`)
-        const data = res.data
-        console.log(data, '데이터조회결과')
-        setFriendList(data)
+    async function dataGet() {        
+        axios.get('/api/friends',{params:{userLogin:router.query.id}}).then(
+          res=>setFriendList(res.data))        
     }
 
     useEffect(() => {
-        dataGet();
+        dataGet();        
     }, [])
 
     console.log(friendList,'친구')
@@ -48,7 +46,9 @@ const GiftTree = () => {
           <div style={{display:"flex",justifyContent:"space-around",alignItems:"center"}}>
           <ul style={{display:"flex", listStyle:"none"}}>
                 {friendList?.map((obj,idx)=>{
-                return <li key={idx} style={{width:60}}><Link href={`/GiftTree/${obj.NickName}`}><figure><img style={{width:40,borderRadius:"50%",border:`3px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)`}}  src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption><strong>{obj.NickName}</strong></figcaption></figure></Link></li>
+                return <li onClick={()=>{
+
+                }} key={idx} style={{width:60}}><Link href={`/GiftTree/${obj.UserID}`}><figure><img style={{width:40,borderRadius:"50%",border:`3px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)`}}  src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption><strong>{obj.NickName}</strong></figcaption></figure></Link></li>
                 })}
             </ul>
             <div style={{position:"relative"}}>
