@@ -97,7 +97,7 @@ export default function Home() {
         </form>
 
         <div style={{ width: "100%", position: "absolute", left: "0", bottom: "30%", textAlign: "center" }}>
-          <span style={{ fontFamily: "Neo3", fontSize: "14px" }}>Don't have an account?</span> <button style={{ border: "none", color: "#219bc3", backgroundColor: "transparent" }} onClick={() => { setModalOpen(!modalOpen) }}>Sign Up</button>
+          <span style={{ fontFamily: "Neo3", fontSize: "14px" }}>Dont have an account?</span> <button style={{ border: "none", color: "#219bc3", backgroundColor: "transparent" }} onClick={() => { setModalOpen(!modalOpen) }}>Sign Up</button>
         </div>
 
 
