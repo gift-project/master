@@ -22,6 +22,9 @@ const GiftTree = () => {
     router?.push("/")
   }
 
+  
+  const [visible,setVisible] = useState(false);
+
   const [friendList, setFriendList] = useState();
   const searchInput = useRef(null)
 
@@ -60,7 +63,7 @@ const GiftTree = () => {
           </div>
             <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button>
         </div>
-      <ProductList />  
+      <ProductList visible={visible} setVisible={setVisible} />  
       
       <NavBar />  
 

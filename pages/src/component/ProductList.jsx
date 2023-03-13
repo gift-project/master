@@ -10,9 +10,8 @@ import { useRouter } from 'next/router';
 // 카테고리 페이지
 
 
-const ProductList = () => {
+const ProductList = ({visible,setVisible}) => {
 
-    const [visible,setVisible] = useState(false);
     const router = useRouter();
     console.log(router.query.id)
 
@@ -50,7 +49,6 @@ const ProductList = () => {
     
     // 네이버 검색 api 호출
     const GetApi = (obj)=>{
-
         keyWo.current = obj;
         
         axios.get(`http://localhost:4000/search/shop?query=${obj}&display=${numRef.current}`)
@@ -91,16 +89,14 @@ const ProductList = () => {
         
 
         // 카테고리 아이템 처음부터 보여주는 코드
-        useEffect( () => {
-            if(visible)
-            {GetApi()}},
-             [visible] )
+        // useEffect( () => {
+        //     if(visible)
+        //     {GetApi()}},
+        //      [visible] )
   
         useEffect(() => {
           // 위시리스트
-          axios.get('/api/gift',{params:{userLogin:router.query.id}}).then(
-            res=>
-            SetGive(res.data))
+          userWishListGet();
             //console.log(res.data)
 
 
@@ -110,9 +106,15 @@ const ProductList = () => {
             //   res=>console.log(res.data))
     
         
-        }, [router.query.id]);
+        }, [router.query.id,visible]);
 
         console.log(visible,'비져블')
+
+        const userWishListGet = () => {
+          axios.get('/api/gift',{params:{userLogin:router.query.id}}).then(
+            res=>
+            SetGive(res.data))
+        }
     
     
         const searchCg = (e)=>{
@@ -150,18 +152,6 @@ const ProductList = () => {
   <div style={{position:"relative",margin:"4%"}}>
   선물 트리공간
 
-  <button onClick={() => {
-    axios.get('/api/gift',{params:{userLogin:router.query.id}}).then(
-      res=>
-      SetGive(res.data)
-      //console.log(res.data)
-  )}}>Sql.GiftList 접근</button>
-
-        <button onClick={() => {
-           axios.get('/api/friends',{params:{userLogin:router.query.id}}).then(
-            res=>console.log(res.data)
-  )}}>Sql.FriendsList 접근</button>
-
         {/* sql데이터 기반 화면에 뿌려보기 */}
         {/* {sqlGift?.map((obj, idx) => {
           return <article key={"TestA"+idx}>
@@ -181,7 +171,13 @@ const ProductList = () => {
       <img src={obj.image} style={{ width:"167px", height:"177px", paddingBottom:"10px" ,borderRadius:"10px"}}/>
       <strong> {obj.title}</strong>
       <span>{obj.lprice}</span>
-      <button onClick={()=>{console.log(obj)}}>{obj.UserID == userLogin?"삭제하기":"선물하기"}</button>
+      <button onClick={()=>{axios.delete(
+        '/api/gift',{params:{ItemID:obj.id}
+        
+      }
+      );userWishListGet()
+      
+      }}>{obj.UserID == userLogin?"삭제하기":"선물하기"}</button>
       </article>
       
       )

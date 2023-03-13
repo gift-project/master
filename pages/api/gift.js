@@ -34,9 +34,21 @@ export default function handler(req, res) {
         res.json(data)
     }
 
+    const dataDelete = async () => {
+        let { ItemID } = query;
+        console.log(ItemID, '선물삭제 Del !!')
+
+        let data = await executeQuery(
+            'delete from GiftList where id=?', [ItemID]
+        );
+        res.json(data)
+    }
+
     switch (method) {
         case "GET": selectGiftData(); break;
         case "POST": insertGiftData(); break;
+        case 'PUT': dataUpdate(); break;
+        case 'DELETE': dataDelete(); break;
     }
 }
 
