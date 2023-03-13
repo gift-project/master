@@ -25,6 +25,8 @@ const ProductList = () => {
         title:"생일선물ㅇㅇㅇㅇㅇㅇㅇ",
         lprice:"12500원"}
     ]);
+    {console.log(Give ,"기브기브기브")}
+
     //ver222<-push
     //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
     //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
@@ -145,6 +147,7 @@ const ProductList = () => {
           axios.get('/api/friends')
             .then(res => setFriendList(res.data))
         }}>Sql.FriendsList 접근</button>
+
         {/* sql데이터 기반 화면에 뿌려보기 */}
         {sqlGift?.map((obj, idx) => {
           return <article key={"TestA"+idx}>
@@ -155,18 +158,19 @@ const ProductList = () => {
         })}
         <hr />
         {sqlFriends?.map((obj, idx) => { return <div key={"TestB"+idx}>{obj.NickName}</div> })}
+
     {/* 트리공간에 선물 뿌리기 */}
-    {Give && Give.map((obj,idx)=>{
+    {Give && Give?.map((obj,idx)=>{
       return(
+        
       <article key={"Tree"+idx} style={{width:"50%", height:"50px"}}>
       <img src={obj.image} style={{width:"100%", height:"200px"}}/>
       <strong> {obj.title}</strong>
       <span>{obj.lprice}</span>
       </article>
-
+      
       )
     })}
-
       {/* 
           카테고리 라디우스이미지 + 카테고리 이름 
 
@@ -203,7 +207,6 @@ const ProductList = () => {
             background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
             }}
-
         
         />
         <button type='submit'
@@ -244,7 +247,7 @@ const ProductList = () => {
         {arr.map((obj,idx)=>{
             return <li onClick={ ()=>{GetApi(obj)} } 
             style={{
-              fontfamily: "Neo3, sans-serif",backgroundColor:"#b2d3e1",width:58,height:58,margin:"1.5%", textAlign:"center",alignItems:"center", borderRadius:"50%",
+              fontFamily: "Neo3, sans-serif",backgroundColor:"#b2d3e1",width:58,height:58,margin:"1.5%", textAlign:"center",alignItems:"center", borderRadius:"50%",
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
             }} 
             key={"categoryList"+idx}> 
@@ -258,81 +261,80 @@ const ProductList = () => {
             }}/>  </figure> <span>{obj}</span> </li>
         })}
         </ul>
+
         
         {/* 카테고리 클릭시 나오는 아이템목록22222 */}
         <div style={{width:"100%", display:"flex", flexWrap:"wrap",padding:"10%"}}>
+
           {thenApi && thenApi.map((obj, idx)=>{
-            return <figure key={"shopping"+idx}
-            style={{
-              width: "calc(50% - 1%)",
-              background: "#fff",
-              boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.16), 0px 4px 16px rgba(0, 0, 0, 0.08)",
-              borderRadius: "5px",
-              display: "flex",
-              flexDirection: "column",
-              overflow: "hidden",
-              margin: "0.5%",
-              }}>
-                {/* width:50 */}
-            <img src={obj.image} style={{ width:"100%"}} alt="product" />
-                <figcaption
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  flexGrow: "1",
-                  }}>
-                <span style={{fontfamily: "Neo3, sans-serif"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
-                <p>{obj.lprice}원</p>
-<<<<<<< HEAD
-                <div
-                style={{
+            return <div key={"shopping" + idx}
+              style={{
+                width: "calc(50% - 1%)",
+                background: "#fff",
+                boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.16), 0px 4px 16px rgba(0, 0, 0, 0.08)",
+                borderRadius: "5px",
                 display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "100%",
-                }}
-                >
-                <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}
-                style={{
-                  background: "#007AFF",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  cursor: "pointer",
-                  margin: "5px",
-                }}>
-                자세히보기</button>                
-                 <button onClick={ ()=>{giveTo(obj)} }
-                 style={{
-                  background: "#9DC88D",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  cursor: "pointer",
-                  margin: "5px",
-                 }}
-                 >선물하기</button>
-                </div>
-              </figcaption>            
-=======
-                <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}>
-              자세히보기</button>                
-            <button onClick={ ()=>{addToGift(obj)} }>위시리스트담기</button>
-                    </figcaption>            
->>>>>>> 6b9e5173eb61b0b6291b1ae164ec5fc8390b7fd9
-            </figure>
-          })
-          }
-          <div ref={setBottom} style={{opacity:0}}>바닥</div>
+                flexDirection: "column",
+                overflow: "hidden",
+                margin: "0.5%"
+              }}>
+
+              <img src={obj.image} style={{ width:"100%"}} alt="product" />
+        <figcaption
+        style={{
+          width: "100%",
+          padding: "10px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexGrow: "1",
+          }}>
+        <span style={{fontFamily: "Neo3, sans-serif"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
+        <p>{obj.lprice}원</p>
+        <div
+        style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+        }}
+        >
+        <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}
+        style={{
+          background: "#007AFF",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          padding: "10px",
+          cursor: "pointer",
+          margin: "5px",
+        }}>
+        자세히보기</button>
+         <button onClick={ ()=>{addToGift(obj)} }
+         style={{
+          background: "#9DC88D",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          padding: "10px",
+          cursor: "pointer",
+          margin: "5px",
+         }}
+         >선물하기</button>
         </div>
+      </figcaption> 
+ 
+             </div>})}
+
+        </div>
+
+    <div ref={setBottom} style={{opacity:0}}>바닥</div>
+              
+
     </div>
-</div><button style={{position:"absolute",right:"2%",bottom:"10%"}} onClick={()=>{setVisible(!visible)}}>내가 담은 WishList</button>
+    </div>
+    <button style={{ position: "absolute", right: "2%", bottom: "10%" }} onClick={() => { setVisible(!visible); } }>내가 담은 WishList</button>
     </div>
   )
 }
