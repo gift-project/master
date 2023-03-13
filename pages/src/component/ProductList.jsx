@@ -129,11 +129,6 @@ const ProductList = () => {
           setThenApi();          
         }
 
-        const checkTest = () => {
-          console.log(userLogin,'현재 유저의 id값??')
-          axios.get('/api/friends',{params:{userLogin:userLogin}})
-        }
-
         ///////////////////////////////////////
 
 
@@ -150,21 +145,14 @@ const ProductList = () => {
   선물 트리공간
 
   <button onClick={() => {
-    checkTest()
-    // .then(res => 
-    //   console.log(res.data,'위시스')
-    //   //console.log(userLogin,'로그인된 유저id값')
-    //           //setSqlGift(res.data)
-    //           )
-        }}>Sql.GiftList 접근</button>
+    axios.get('/api/gift',{params:{userLogin:userLogin}}).then(
+      res=>console.log(res.data)
+  )}}>Sql.GiftList 접근</button>
 
         <button onClick={() => {
-          axios.get('/api/friends',{UserID:userLogin})
-            .then(res => 
-              console.log(res.data,'프렌드')
-              // setFriendList(res.data)
-              )
-        }}>Sql.FriendsList 접근</button>
+           axios.get('/api/friends',{params:{userLogin:userLogin}}).then(
+            res=>console.log(res.data)
+  )}}>Sql.FriendsList 접근</button>
 
         {/* sql데이터 기반 화면에 뿌려보기 */}
         {/* {sqlGift?.map((obj, idx) => {

@@ -2,17 +2,15 @@ import { executeQuery } from './db';
 
 export default function handler(req, res) {
     // DESC(내림차순), ASC(오름차순)
-    const { method, body } = req;
+    const { method, body, query } = req;
     console.log(method)
 
     const selectGiftData = async () => {
-        console.log(body, '???????????')
-        let { LoginUserID } = body;
-        console.log(LoginUserID, '선물조회 get')
+        let { userLogin } = query;
+        console.log(userLogin, '선물조회 get!!')
 
         let data = await executeQuery(
-            'select * from GiftList where UserID like UserID order by UserID DESC',
-            [LoginUserID]
+            'select * from GiftList where UserID=? order by UserID DESC', [userLogin]
         );
         res.json(data)
 

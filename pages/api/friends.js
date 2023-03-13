@@ -9,7 +9,8 @@ export default function handler(req, res) {
         console.log(userLogin, '???')
         // get과 delete요청은 body가 없으므로, params로 받아야한다.
         try {
-            let data = await executeQuery('select * from FriendsList where UserID=? order by UserID DESC', [userLogin]);
+            let data = await executeQuery(
+                'select * from FriendsList where UserID=? order by UserID DESC', [userLogin]);
             res.json(data)
         } catch (err) {
             res.send(err);
