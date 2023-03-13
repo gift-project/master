@@ -1,11 +1,23 @@
-import React,{useRef, useState} from 'react'
+import axios from 'axios';
+import React,{useContext, useEffect, useRef, useState} from 'react'
 import NavBar from '../src/component/NavBar'
+import { TeamC } from '../src/Context';
 
 const MyPage = () => {
     const [giftVisible,setGiftVisible] = useState(false);
-    const arr = ["a","b","a","b","a","b"]
+    const arr = ["a"];
+    const [giveData,setGiveData] = useState();
+    const [takeData,setTakeData] = useState();
 
+    const {userLogin} = useContext(TeamC)
+    console.log(userLogin)
     console.log(giftVisible)
+
+    useEffect(()=>{
+      axios.get('/api/gift',{params:{userLogin:userLogin.UserID}}).then(res=>setTakeData(res.data))
+      ///////////////////
+      axios.get('/api/givepost',{params:{userLogin:userLogin.UserID}}).then(res=>setGiveData(res.data))
+    },[])
 
     return (
     <div style={{paddingTop:"10%"}}>
@@ -26,14 +38,15 @@ const MyPage = () => {
           <ul style={{display: "flex", flexWrap: "wrap", width: "90%", borderRadius: "20px", backgroundColor: "#fff",listStyle: "none",height:"30vh", overflow: "auto"}}>
 
             {
-              arr.map((obj,idx )=>{
+              takeData?.map((obj,idx )=>{
+                
                 return <li key={idx} style={{width: "50%", borderBottom : (idx == arr.length - 2 || idx == arr.length - 1) ? "none" : "1px solid #ccc"  }}> 
                         <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center" , padding: " 15px 10%"}}>
-                          <img src="https://shopping-phinf.pstatic.net/main_3752555/37525550176.20230130122651.jpg" alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
+                          <img src={obj.image} alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
                           <div style={{margin: 0, paddingLeft: "20px"}}>
-                            <p style={{fontSize: "14px"}}>title</p>
-                            <p style={{margin: "3px 0", fontSize: "12px"}}>date</p>
-                            <p style={{fontSize: "12px"}}>nickname</p>
+                            <p style={{fontSize: "14px"}}>{obj.title}</p>
+                            <p style={{margin: "3px 0", fontSize: "12px"}}>{obj.price}</p>
+                            <p style={{fontSize: "12px"}}>{obj.GiverName}에게 받음</p>
                           </div>
                         </div>
                       </li>
@@ -49,14 +62,14 @@ const MyPage = () => {
           <ul style={{display: "flex", flexWrap: "wrap", width: "90%", borderRadius: "20px", backgroundColor: "#fff",listStyle: "none",height:"30vh", overflow: "auto"}}>
 
             {
-              arr.map((obj,idx )=>{
+              giveData?.map((obj,idx )=>{
                 return <li key={idx} style={{width: "50%", borderBottom : (idx == arr.length - 2 || idx == arr.length - 1) ? "none" : "1px solid #ccc"  }}> 
                       <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center" , padding: " 15px 10%"}}>
-                        <img src="" alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
+                        <img src={obj.image} alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
                         <div style={{margin: 0, paddingLeft: "20px"}}>
-                          <p style={{fontSize: "14px"}}>title</p>
-                          <p style={{margin: "3px 0", fontSize: "12px"}}>price</p>
-                          <p style={{fontSize: "12px"}}>nickname</p>
+                        <p style={{fontSize: "14px"}}>{obj.title}</p>
+                            <p style={{margin: "3px 0", fontSize: "12px"}}>{obj.price}</p>
+                            <p style={{fontSize: "12px"}}>{obj.UserName}에게 보냄</p>
                         </div>
                       </div>
                     </li>

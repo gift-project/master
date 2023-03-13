@@ -45,7 +45,7 @@ export default function Home() {
       } else if (newValue[0].LoginPW != e.target.passwords.value) {
         return alert("비밀번호를 확인해주세요.")
       } else if (newValue[0].LoginPW == e.target.passwords.value) {
-        setUserLogin(newValue[0].UserID)
+        setUserLogin(newValue[0])
         router.push(`/GiftTree/${newValue[0].UserID}`)
 
         // return alert("로그인 되었습니다.")
@@ -67,7 +67,15 @@ export default function Home() {
 
   function formSignUp(e) {
     e.preventDefault();
-    console.log(e.target.signpasswords.value, e.target.nickname.value, e.target.birthday.value)
+    console.log(e)
+    console.log(e.target.signid.value, e.target.signpasswords.value, e.target.nickname.value, e.target.birthday.value)
+    axios.post('/api', {
+      LoginID: e.target.signid.value,
+      LoginPW: e.target.signpasswords.value,
+      NickName: e.target.nickname.value,
+      Birth: e.target.birthday.value
+    })
+    setModalOpen(!modalOpen)
   }
 
   return (
@@ -105,6 +113,17 @@ export default function Home() {
           <button style={{ width: "30px", height: "30px", position: "absolute", right: "20px", top: "20px", border: "none", backgroundColor: "transparent" }} onClick={() => { setModalOpen(false) }}>X</button>
 
           <form onSubmit={formSignUp} style={{ display: "flex", alignItems: "center", flexWrap: "wrap", width: "70%", height: "25vh", transform: "translateY(100%)" }}>
+
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
+              {/* <Form.Label htmlFor="">password</Form.Label> */}
+              <Form.Control placeholder="Id" name="signid" type="text" />
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
+              {/* <Form.Label htmlFor="">password</Form.Label> */}
+              <Form.Control placeholder="Password" name="signpasswords" type="password" />
+            </div>
+
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
               {/* <Form.Label htmlFor="">BirthDay</Form.Label> */}
               <Form.Control placeholder="BirthDay" name="birthday" type="text" />
@@ -113,11 +132,6 @@ export default function Home() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
               {/* <Form.Label htmlFor="">nickname</Form.Label> */}
               <Form.Control placeholder="Nickname" name="nickname" type="text" />
-            </div>
-
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
-              {/* <Form.Label htmlFor="">password</Form.Label> */}
-              <Form.Control placeholder="Password" name="signpasswords" type="password" />
             </div>
 
             <button style={{ display: "block", width: "100%", padding: "10px 0", cursor: "pointer", border: "none", borderRadius: "7px", color: "#fff", backgroundColor: "#219bc3" }} type="submit">Sign Up</button>

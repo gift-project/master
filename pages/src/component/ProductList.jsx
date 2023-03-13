@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 const ProductList = ({visible,setVisible}) => {
 
     const router = useRouter();
-    console.log(router.query.id)
+    // console.log(router.query.id)
 
     const maxLength = 12; // 문자열 길이 설정 (title)
 
@@ -24,7 +24,6 @@ const ProductList = ({visible,setVisible}) => {
 
     // 사러가기 클릭 -> 트리공간에 뿌려주기
     const [Give,SetGive] = useState([]);
-    {console.log(Give ,"기브기브기브")}
 
     //ver222<-push
     //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
@@ -63,8 +62,6 @@ const ProductList = ({visible,setVisible}) => {
           .then((res) => {
             setThenApi(res.data.items)
             numRef.current+=10
-            console.log(numRef.current, '넘숫자')
-            console.log(obj, '물건')
             a.current = true; //3. 2번 완료후 다시 값을 받아온 뒤에 a.current를 true로 바꿔서 드래그 함수를 실행하게 만들어라
           });
         }
@@ -108,7 +105,6 @@ const ProductList = ({visible,setVisible}) => {
         
         }, [router.query.id,visible]);
 
-        console.log(visible,'비져블')
 
         const userWishListGet = () => {
           axios.get('/api/gift',{params:{userLogin:router.query.id}}).then(
@@ -120,14 +116,16 @@ const ProductList = ({visible,setVisible}) => {
         const searchCg = (e)=>{
           GetApi(e.target[0].value);
           e.preventDefault();
-          console.log(e.target[0].value)
         }
   
-        //////////////////////////////////////////////
+        /////////////////////////
+        /////////////////////
+        console.log(userLogin)
         
         const addToGift = (obj)=>{
 
-          axios.post('/api/gift',{UserID:userLogin
+          axios.post('/api/gift',{UserID:userLogin.UserID
+            ,UserName:userLogin.NickName
             ,title:obj.title
             ,image:obj.image
             ,price:obj.lprice
@@ -138,11 +136,6 @@ const ProductList = ({visible,setVisible}) => {
         }
 
         ///////////////////////////////////////
-
-
-        const [sqlGift, setSqlGift] = useState();
-  const [sqlFriends, setFriendList] = useState();
-  console.log(sqlGift, sqlFriends, '???')
 
 
   return (
@@ -171,13 +164,32 @@ const ProductList = ({visible,setVisible}) => {
       <img src={obj.image} style={{ width:"167px", height:"177px", paddingBottom:"10px" ,borderRadius:"10px"}}/>
       <strong> {obj.title}</strong>
       <span>{obj.lprice}</span>
-      <button onClick={()=>{axios.delete(
-        '/api/gift',{params:{ItemID:obj.id}
-        
-      }
+
+
+
+      {obj.UserID == userLogin.UserID?
+
+<button onClick={()=>{axios.delete(
+  '/api/gift',{params:{ItemID:obj.id}
+  
+}
+);userWishListGet()
+
+}}>삭제하기</button>
+      
+      
+      :<button onClick={()=>{
+        console.log(obj,'선물클릭');
+        axios.put(
+        '/api/gift',{
+          ItemID:obj.id,
+          GiverID:userLogin.UserID,
+          GiverName:userLogin.NickName
+        }
       );userWishListGet()
       
-      }}>{obj.UserID == userLogin?"삭제하기":"선물하기"}</button>
+      }}>선물하기</button>
+      }
       </article>
       
       )

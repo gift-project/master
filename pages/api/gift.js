@@ -23,13 +23,21 @@ export default function handler(req, res) {
     }
 
     const insertGiftData = async () => {
-        let { UserID, title, image, price, state } = body;
-        console.log(UserID, title)
+        let { UserID, UserName, title, image, price, state } = body;
 
         let data = await executeQuery(
-            'insert into GiftList (UserID,title,image,price,state) value (?,?,?,?,?)',
-            // 0 : true / 1 : false // true(0)면 선물완료니까 기본값으로 false(1)
-            [UserID, title, image, price, state]
+            'insert into GiftList (UserID, UserName, title, image, price, state) values (?,?,?,?,?,?)',
+            [UserID, UserName, title, image, price, state]
+        );
+        res.json(data)
+    }
+
+    const dataUpdate = async () => {
+        let { GiverID, GiverName, ItemID } = body;
+        console.log(ItemID, "2", GiverID, GiverName, '선물수정 Put !!')
+
+        let data = await executeQuery(
+            'update GiftList set state=1, GiverID=?, GiverName=? where id=?', [GiverID, GiverName, ItemID]
         );
         res.json(data)
     }

@@ -14,12 +14,13 @@ export default function handler(req, res) {
   }
 
   const insertUserData = async () => {
-    let { UserID, title, image, price } = body;
+    let { LoginID, LoginPW, NickName, Birth } = body;
 
+    console.log(LoginID, LoginPW, NickName, Birth, '???')
     let data = await executeQuery(
-      'insert into teamDbProductList (UserID,title,image,price,state) value (?,?,?,?,1)',
+      'insert into UserList ( LoginID, LoginPW, NickName, Birth ) values (?,?,?,?)',
       // 0 : true / 1 : false // true(1)면 선물완료니까 기본값으로 false(0)
-      [UserID, title, image, price]
+      [LoginID, LoginPW, NickName, Birth]
     );
     res.json(data)
   }

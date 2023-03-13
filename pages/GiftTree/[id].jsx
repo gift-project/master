@@ -29,7 +29,8 @@ const GiftTree = () => {
   const searchInput = useRef(null)
 
     async function dataGet() {        
-        axios.get('/api/friends',{params:{userLogin:router.query.id}}).then(
+        axios.get('/api/friends',{params:{userLogin:router.query.id}})
+        .then(
           res=>setFriendList(res.data))        
     }
 
@@ -55,7 +56,15 @@ const GiftTree = () => {
                 })}
             </ul>
             <div style={{position:"relative"}}>
-            <form onSubmit={(e)=>{e.preventDefault()}} style={{position:"absolute",right:0,top:0,display:"flex",justifyContent:"center",alignItems:"center"}}>
+            <form onSubmit={(e)=>{
+              e.preventDefault()
+              console.log(searchInput.current.value)
+              axios.get('/api').then((res)=>{
+                let newValue = res.data.filter(obj => obj.NickName == searchInput.current.value)
+                console.log(newValue[0]?.NickName,'서치결과')
+                alert(newValue[0]?.NickName + "님이 검색되었습니다.")
+              })
+              }} style={{position:"absolute",right:0,top:0,display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <input ref={searchInput} style={{width:10}} placeholder='친구 검색'/>
                 <button onClick={()=>{console.log(searchInput.current.style={transform:"scale:1"})}} style={{width:30,height:30}} type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
             </form>
