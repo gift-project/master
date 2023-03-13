@@ -130,7 +130,7 @@ const ProductList = () => {
         }
 
         const checkTest = () => {
-          console.log(userLogin,'현재 유저의 id값')
+          console.log(userLogin,'현재 유저의 id값??')
           axios.get('/api/friends',{params:{userLogin:userLogin}})
         }
 
