@@ -147,18 +147,18 @@ const ProductList = () => {
         }}>Sql.FriendsList 접근</button>
         {/* sql데이터 기반 화면에 뿌려보기 */}
         {sqlGift?.map((obj, idx) => {
-          return <article key={idx}>
+          return <article key={"TestA"+idx}>
             <img src={obj.image} style={{ width: "100px", height: "100px" }} />
             <strong> {obj.title}</strong>
             <span>{obj.price}</span>
           </article>
         })}
         <hr />
-        {sqlFriends?.map((obj, idx) => { return <div key={idx}>{obj.NickName}</div> })}
+        {sqlFriends?.map((obj, idx) => { return <div key={"TestB"+idx}>{obj.NickName}</div> })}
     {/* 트리공간에 선물 뿌리기 */}
-    {Give && Give.map((obj)=>{
+    {Give && Give.map((obj,idx)=>{
       return(
-      <article style={{width:"50%", height:"50px"}}>
+      <article key={"Tree"+idx} style={{width:"50%", height:"50px"}}>
       <img src={obj.image} style={{width:"100%", height:"200px"}}/>
       <strong> {obj.title}</strong>
       <span>{obj.lprice}</span>
@@ -211,7 +211,7 @@ const ProductList = () => {
             backgroundColor: "#b2d3e1",
             border: "none",
             color: "white",
-            padding: "15px 20px;",
+            padding: "15px 20px",
             textAlign: "center",
             textDecoration: "none",
             display: "inline-block",
@@ -247,7 +247,7 @@ const ProductList = () => {
               fontfamily: "Neo3, sans-serif",backgroundColor:"#b2d3e1",width:58,height:58,margin:"1.5%", textAlign:"center",alignItems:"center", borderRadius:"50%",
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
             }} 
-            key={idx}> 
+            key={"categoryList"+idx}> 
             <figure style={{overflow:"hidden"}}>
             <img src={`/img/${obj}.jpg`}
             style={{
@@ -262,7 +262,7 @@ const ProductList = () => {
         {/* 카테고리 클릭시 나오는 아이템목록 */}
         <div style={{width:"100%", display:"flex", flexWrap:"wrap",padding:"10%"}}>
           {thenApi && thenApi.map((obj, idx)=>{
-            return <figure key={idx}
+            return <figure key={"shopping"+idx}
             style={{
               width: "calc(50% - 1%)",
               background: "#fff",
@@ -287,7 +287,6 @@ const ProductList = () => {
                   }}>
                 <span style={{fontfamily: "Neo3, sans-serif"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
                 <p>{obj.lprice}원</p>
-<<<<<<< HEAD
                 <div
                 style={{
                 display: "flex",
@@ -320,12 +319,9 @@ const ProductList = () => {
                  >선물하기</button>
                 </div>
               </figcaption>            
-=======
                 <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}>
               자세히보기</button>                
             <button onClick={ ()=>{addToGift(obj)} }>위시리스트담기</button>
-                    </figcaption>            
->>>>>>> 6b9e5173eb61b0b6291b1ae164ec5fc8390b7fd9
             </figure>
           })
           }
