@@ -32,7 +32,6 @@ const ProductList = ({visible,setVisible}) => {
 
   
     const {userLogin, setUserLogin} = useContext(TeamC);
-    console.log(userLogin,'??')
 
     const [bottom, setBottom] = useState(null);
     const botObs = useRef(null);
@@ -93,34 +92,19 @@ const ProductList = ({visible,setVisible}) => {
   
         useEffect(() => {
           // 위시리스트
-          userWishListGet();
-            //console.log(res.data)
-
-
-
-            // 친구리스트
-            // axios.get('/api/friends',{params:{userLogin:router.query.id}}).then(
-            //   res=>console.log(res.data))
-    
-        
+          userWishListGet();        
         }, [router.query.id,visible]);
-
 
         const userWishListGet = () => {
           axios.get('/api/gift',{params:{userLogin:router.query.id}}).then(
             res=>
             SetGive(res.data))
         }
-    
-    
+
         const searchCg = (e)=>{
           GetApi(e.target[0].value);
           e.preventDefault();
         }
-  
-        /////////////////////////
-        /////////////////////
-        console.log(userLogin)
         
         const addToGift = (obj)=>{
 
@@ -139,11 +123,10 @@ const ProductList = ({visible,setVisible}) => {
 
 
   return (
-    <div style={{width:"100%",height:"100vh",padding:"120px 0 100px",  position:"relative"}}>
+    <div style={{width:"100%",height:"90vh",paddingTop:"85px",  position:"relative"}}>
     
      {/* 카테고리, 카테리고리 검색 보여주는곳 */}
   <div style={{position:"relative",margin:"4%"}}>
-  선물 트리공간
 
         {/* sql데이터 기반 화면에 뿌려보기 */}
         {/* {sqlGift?.map((obj, idx) => {
@@ -379,10 +362,10 @@ const ProductList = ({visible,setVisible}) => {
         cursor: "pointer",
         height: "50px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
-
-        position: "absolute",
-        right: "1%",
-        bottom: "8%",
+        transform:"translateY(-100%)",
+        position:"absolute",
+        bottom:"4%",
+        right:"3%"
         }}
       onClick={() => { setVisible(!visible); } }>WishList
     </button>

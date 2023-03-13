@@ -2,16 +2,17 @@ import axios from 'axios';
 import React,{useContext, useEffect, useRef, useState} from 'react'
 import NavBar from '../src/component/NavBar'
 import { TeamC } from '../src/Context';
+import { useRouter } from 'next/router';
 
 const MyPage = () => {
     const [giftVisible,setGiftVisible] = useState(false);
-    const arr = ["a"];
     const [giveData,setGiveData] = useState();
     const [takeData,setTakeData] = useState();
-
     const {userLogin} = useContext(TeamC)
-    console.log(userLogin)
-    console.log(giftVisible)
+    const router = useRouter();
+    if(userLogin === false){
+      router?.push("/")
+    }
 
     useEffect(()=>{
       axios.get('/api/gift',{params:{userLogin:userLogin.UserID}}).then(res=>setTakeData(res.data))
@@ -21,6 +22,7 @@ const MyPage = () => {
 
     return (
     <div style={{paddingTop:"10%"}}>
+      <div style={{position:"fixed",top:"48%",left:"50%",transform:"translate(-50%,-50%)",zIndex:0,background:"rgba(255,255,255,0.6)",width:"550px",height:"90vh",borderRadius:"24px",boxShadow:"0 2px 2px"}}>
         <div style={{width:250, marginBottom: "50px"}}>
           <p style={{display: "block", width:150, height:150, margin: "0 auto"}}>
             <img style={{width: "100%", height: "100%", borderRadius: "50%"}} src="/img/profile_picture04.jpg"/>
@@ -38,9 +40,9 @@ const MyPage = () => {
           <ul style={{display: "flex", flexWrap: "wrap", width: "90%", borderRadius: "20px", backgroundColor: "#fff",listStyle: "none",height:"30vh", overflow: "auto"}}>
 
             {
-              takeData?.map((obj,idx )=>{
+              takeData && takeData.map((obj,idx )=>{
                 
-                return <li key={idx} style={{width: "50%", borderBottom : (idx == arr.length - 2 || idx == arr.length - 1) ? "none" : "1px solid #ccc"  }}> 
+                return <li key={idx} style={{width: "50%", borderBottom : (idx == takeData.length - 2 || idx == takeData.length - 1) ? "none" : "1px solid #ccc"  }}> 
                         <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center" , padding: " 15px 10%"}}>
                           <img src={obj.image} alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
                           <div style={{margin: 0, paddingLeft: "20px"}}>
@@ -62,8 +64,8 @@ const MyPage = () => {
           <ul style={{display: "flex", flexWrap: "wrap", width: "90%", borderRadius: "20px", backgroundColor: "#fff",listStyle: "none",height:"30vh", overflow: "auto"}}>
 
             {
-              giveData?.map((obj,idx )=>{
-                return <li key={idx} style={{width: "50%", borderBottom : (idx == arr.length - 2 || idx == arr.length - 1) ? "none" : "1px solid #ccc"  }}> 
+              takeData && takeData.map((obj,idx )=>{
+                return <li key={idx} style={{width: "50%", borderBottom : (idx == takeData.length - 2 || idx == takeData.length - 1) ? "none" : "1px solid #ccc"  }}> 
                       <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center" , padding: " 15px 10%"}}>
                         <img src={obj.image} alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
                         <div style={{margin: 0, paddingLeft: "20px"}}>
@@ -80,7 +82,7 @@ const MyPage = () => {
         </div>
 
         {/* 보낸 선물 */}
-        
+        </div>
         <NavBar />
     </div>
   )
