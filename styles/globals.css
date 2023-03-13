@@ -89,3 +89,28 @@ main {
   height: 100vh;
   background-image: url("/img/backgImg.png");
 }
+
+
+
+/* material ui login form */
+
+
+.css-1b0ve20>:not(style){
+  margin: 0;
+}
+
+
+.form-label{
+  margin: 0;
+  margin-left: -40px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.form-control{
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 8px 30px;
+  border-radius: 20px;
+  border: 1px solid #ddd
+}
