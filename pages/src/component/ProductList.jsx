@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { TeamC } from '../Context';
 import { MyLocationRounded } from '@mui/icons-material';
+import { width } from '@mui/system';
 
 
 // 카테고리 페이지
@@ -12,7 +13,7 @@ const ProductList = () => {
 
     const [visible,setVisible] = useState(false);
 
-    const maxLength = 10; // 문자열 길이 설정 (title)
+    const maxLength = 12; // 문자열 길이 설정 (title)
 
     const arr = ["생일", "결혼", "환갑", "응원", "합격"]
 
@@ -123,7 +124,7 @@ const ProductList = () => {
     
           SetGive([...Give, value])
           setVisible(!visible)
-          setThenApi();          
+          setThenApi();
         }
 
         const [sqlGift, setSqlGift] = useState();
@@ -171,23 +172,15 @@ const ProductList = () => {
       
       )
     })}
-      {/* 
-          카테고리 라디우스이미지 + 카테고리 이름 
-
-          카테고리 5개 이미지 구하샘 O
-
-          아이템들 물품제목, 가격  간결하게 보이게 ex 욕실 화장실 ... 
-                                             10,000                     
-          
-          타이틀 텍스트 한줄로 줄이기 
-          
-      */}
+    
     <div style={{ 
-      background:"#fff", width:"100%",height:"70vh",position:"absolute",top:0,left:0,display:visible?"block":"none",overflow:"auto", boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", borderRadius: "10px", padding: "20px"
+      background:"#f9e9ee", width:"100%",height:"70vh",position:"absolute",top:0,left:0,display:visible?"block":"none",overflow:"auto", boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", borderRadius: "10px", padding: "20px"
       }}>
       <article style={{display:"flex",justifyContent:"space-around"}}>
       {/* <h3>쇼핑카트</h3> */}
-        <form onSubmit={ (e)=>{searchCg(e)} } style={{transform:"translateY(-11px)"}}>
+        <form onSubmit={ (e)=>{searchCg(e)} } 
+        // style={{transform:"translateY(-11px)"}}
+        >
         <input 
 
           color='#000'
@@ -232,6 +225,7 @@ const ProductList = () => {
       </article>
 
         <ul style={{
+           margin:"20px",
            display: "flex",
            listStyle: "none",
            paddingBottom:"5%",
@@ -239,7 +233,7 @@ const ProductList = () => {
            alignItems: "center",
            background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
-           borderRadius: "16px", // 라운드 처리
+           borderRadius: "10px", // 라운드 처리
           // display:"flex", listStyle:"none", padding:"2%", justifyContent:"space-around", alignItems:"center"
           }}>
         
@@ -264,64 +258,77 @@ const ProductList = () => {
 
         
         {/* 카테고리 클릭시 나오는 아이템목록22222 */}
-        <div style={{width:"100%", display:"flex", flexWrap:"wrap",padding:"10%"}}>
+        <div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
 
           {thenApi && thenApi.map((obj, idx)=>{
             return <div key={"shopping" + idx}
               style={{
-                width: "calc(50% - 1%)",
-                background: "#fff",
-                boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.16), 0px 4px 16px rgba(0, 0, 0, 0.08)",
-                borderRadius: "5px",
+                // width: "calc(50% - 1%)",/
+                // background: "rgba(255, 255, 255, 0.5)",
+                // boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.16), 0px 4px 16px rgba(0, 0, 0, 0.08)",
+
+                background: "rgba(255, 255, 255, 0.5)",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", 
+                borderRadius: "10px",
                 display: "flex",
                 flexDirection: "column",
                 overflow: "hidden",
-                margin: "0.5%"
+                padding:"10px",
+                margin: "20px",
+                width:"41%"
               }}>
 
-              <img src={obj.image} style={{ width:"100%"}} alt="product" />
+              <img src={obj.image} style={{ width:"167px", height:"177px", paddingBottom:"10px" ,borderRadius:"10px"}} alt="product" />
         <figcaption
         style={{
           width: "100%",
-          padding: "10px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          alignItems: "center",
+          padding: "10px, 10px, 10px",
+          display: "block",
+          textAlign:"center",
+
+          // display: "flex",
+          // flexDirection: "column",
+          // justifyContent: "space-between",
+          // alignItems: "center",
+
           flexGrow: "1",
           }}>
-        <span style={{fontFamily: "Neo3, sans-serif"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
-        <p>{obj.lprice}원</p>
+        <span>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
+        <p style={{paddingBottom:"10px", paddingTop:"10px"}}> {obj.lprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
         <div
         style={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        width: "100%",
+        width: "85%",
         }}
         >
         <button onClick={()=>{window.open(`${obj.link}`, 'window_name', 'width=430, height=500, location=no, status=no,  scrollbars=yes')}}
         style={{
-          background: "#007AFF",
+          background: "#f2cfda",
           color: "#fff",
           border: "none",
-          borderRadius: "5px",
+          borderRadius: "10px",
           padding: "10px",
           cursor: "pointer",
           margin: "5px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+
         }}>
-        자세히보기</button>
+        보러가기</button>
          <button onClick={ ()=>{addToGift(obj)} }
          style={{
-          background: "#9DC88D",
+          background: "#b2d3e1",
           color: "#fff",
           border: "none",
-          borderRadius: "5px",
+          borderRadius: "10px",
           padding: "10px",
           cursor: "pointer",
           margin: "5px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+          
          }}
-         >선물하기</button>
+         >담아두기</button>
         </div>
       </figcaption> 
  
@@ -334,7 +341,29 @@ const ProductList = () => {
 
     </div>
     </div>
-    <button style={{ position: "absolute", right: "2%", bottom: "10%" }} onClick={() => { setVisible(!visible); } }>내가 담은 WishList</button>
+
+    <button 
+       style={{
+        backgroundColor: "#b2d3e1",
+        border: "none",
+        color: "white",
+        padding: "15px 20px",
+        textAlign: "center",
+        textDecoration: "none",
+        display: "inline-block",
+        fontSize: "16px",
+        borderRadius: "10px",
+        cursor: "pointer",
+        height: "50px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+
+        position: "absolute",
+        right: "1%",
+        bottom: "8%",
+        }}
+      onClick={() => { setVisible(!visible); } }>WishList
+    </button>
+
     </div>
   )
 }
