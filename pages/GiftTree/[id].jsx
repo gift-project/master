@@ -38,6 +38,7 @@ const GiftTree = () => {
 
     console.log(friendList,'친구')
     // console.log(Math.floor(Math.random()*5)+1)
+    ///wwwwwwwwwwwwww
 
   return (
     <div style={{display:"flex",flexDirection:"column",position:"relative"}}>
