@@ -3,18 +3,30 @@ import { executeQuery } from './db';
 export default function handler(req, res) {
     // DESC(내림차순), ASC(오름차순)
     const { method, body } = req;
+    console.log(method)
 
     const selectGiftData = async () => {
-        try {
-            let data = await executeQuery('select * from GiftList where UserID=2 order by UserID DESC', []);
-            res.json(data)
-        } catch (err) {
-            res.send(err);
-        }
+        console.log(body, '???????????')
+        let { LoginUserID } = body;
+        console.log(LoginUserID, '선물조회 get')
+
+        let data = await executeQuery(
+            'select * from GiftList where UserID like UserID order by UserID DESC',
+            [LoginUserID]
+        );
+        res.json(data)
+
+        // try {
+        //     let data = await executeQuery("select * from GiftList where UserID=LoginUserID order by UserID DESC", [LoginUserID]);
+        //     res.json(data)
+        // } catch (err) {
+        //     res.send(err);
+        // }
     }
 
     const insertGiftData = async () => {
         let { UserID, title, image, price, state } = body;
+        console.log(UserID, title)
 
         let data = await executeQuery(
             'insert into GiftList (UserID,title,image,price,state) value (?,?,?,?,?)',
@@ -33,12 +45,5 @@ export default function handler(req, res) {
 //  #2.  method를 통해, 접속하는데 *(전체) from teamDbList(지정한 db파일이름)
 
 ///////////////////////////////////////////////
-
-
-
-
-
-
-
 
 ////////////////////////////////////////////////////

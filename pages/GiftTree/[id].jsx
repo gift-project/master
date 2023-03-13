@@ -9,12 +9,21 @@ import ProductList from '../src/component/productList';
 import NavBar from '../src/component/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router';
 
 
 const GiftTree = () => {
 
-    const [friendList, setFriendList] = useState();
-    const searchInput = useRef(null)
+  
+  const {userLogin,setUserLogin} = useContext(TeamC)
+  console.log(userLogin,'유저정보')
+  const router = useRouter();
+  if(userLogin === false){
+    router?.push("/")
+  }
+
+  const [friendList, setFriendList] = useState();
+  const searchInput = useRef(null)
 
     async function dataGet() {
         const res = await axios.get(`/api`)
@@ -48,7 +57,7 @@ const GiftTree = () => {
             </form>
             </div>
           </div>
-            
+            <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button>
         </div>
       <ProductList />  
       
@@ -59,3 +68,9 @@ const GiftTree = () => {
 }
 
 export default GiftTree
+
+
+
+
+
+

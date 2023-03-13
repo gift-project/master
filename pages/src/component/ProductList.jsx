@@ -34,8 +34,9 @@ const ProductList = () => {
 
 
   
-    const {MyID} = useContext(TeamC);
-    console.log(MyID,'??')
+    const {MyID,userLogin, setUserLogin} = useContext(TeamC);
+    console.log(userLogin,'??')
+    console.log(MyID,'???')
 
     const [bottom, setBottom] = useState(null);
     const botObs = useRef(null);
@@ -111,9 +112,11 @@ const ProductList = () => {
           console.log(e.target[0].value)
         }
   
+        //////////////////////////////////////////////
+        
         const addToGift = (obj)=>{
 
-          axios.post('/api/gift',{UserID:MyID
+          axios.post('/api/gift',{UserID:userLogin
             ,title:obj.title
             ,image:obj.image
             ,price:obj.lprice
@@ -125,6 +128,14 @@ const ProductList = () => {
           setVisible(!visible)
           setThenApi();          
         }
+
+        const checkTest = () => {
+          console.log(userLogin,'현재 유저의 id값')
+          axios.get('/api/friends',{params:{userLogin:userLogin}})
+        }
+
+        ///////////////////////////////////////
+
 
         const [sqlGift, setSqlGift] = useState();
   const [sqlFriends, setFriendList] = useState();
@@ -139,17 +150,24 @@ const ProductList = () => {
   선물 트리공간
 
   <button onClick={() => {
-          axios.get('/api/gift')
-            .then(res => setSqlGift(res.data))
+    checkTest()
+    // .then(res => 
+    //   console.log(res.data,'위시스')
+    //   //console.log(userLogin,'로그인된 유저id값')
+    //           //setSqlGift(res.data)
+    //           )
         }}>Sql.GiftList 접근</button>
 
         <button onClick={() => {
-          axios.get('/api/friends')
-            .then(res => setFriendList(res.data))
+          axios.get('/api/friends',{UserID:userLogin})
+            .then(res => 
+              console.log(res.data,'프렌드')
+              // setFriendList(res.data)
+              )
         }}>Sql.FriendsList 접근</button>
 
         {/* sql데이터 기반 화면에 뿌려보기 */}
-        {sqlGift?.map((obj, idx) => {
+        {/* {sqlGift?.map((obj, idx) => {
           return <article key={"TestA"+idx}>
             <img src={obj.image} style={{ width: "100px", height: "100px" }} />
             <strong> {obj.title}</strong>
@@ -157,7 +175,7 @@ const ProductList = () => {
           </article>
         })}
         <hr />
-        {sqlFriends?.map((obj, idx) => { return <div key={"TestB"+idx}>{obj.NickName}</div> })}
+        {sqlFriends?.map((obj, idx) => { return <div key={"TestB"+idx}>{obj.NickName}</div> })} */}
 
     {/* 트리공간에 선물 뿌리기 */}
     {Give && Give?.map((obj,idx)=>{
