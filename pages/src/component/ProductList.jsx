@@ -29,9 +29,8 @@ const ProductList = () => {
     {console.log(Give ,"기브기브기브")}
 
     //ver222<-push
-    //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-    //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-    //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+    //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+    //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 
 
   
