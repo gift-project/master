@@ -1,7 +1,6 @@
 import React, { useState,useEffect, useRef } from 'react'
 import Link from 'next/link'
 import axios from 'axios';
-import Image from 'next/image';
 import { useContext } from 'react';
 import { TeamC } from '../src/Context';
 import styles from "./test.module.css";
@@ -11,12 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router';
 
-
 const GiftTree = () => {
-
   
   const {userLogin,setUserLogin} = useContext(TeamC)
-  console.log(userLogin,'유저정보')
   const router = useRouter();
   if(userLogin === false){
     router?.push("/")
@@ -38,24 +34,22 @@ const GiftTree = () => {
         dataGet();        
     }, [])
 
-    console.log(friendList,'친구')
-    // console.log(Math.floor(Math.random()*5)+1)
-    ///wwwwwwwwwwwwww
-
   return (
     <div style={{display:"flex",flexDirection:"column",position:"relative"}}>
-        <div style={{width:"100%",maxWidth:"600px",minWidth:"300px", height:"90px",position:"fixed",top:0,left:"50%",transform:"translateX(-50%)",zIndex:10,background:'#ddd'}}>
-          {/* ,position:"fixed",top:0,left:"50%",transform:"translateX(-50%)" */}
-          <div>친구리스트</div>
+      <div style={{position:"fixed",top:"48%",left:"50%",transform:"translate(-50%,-50%)",zIndex:0,background:"rgba(255,255,255,0.6)",width:"550px",height:"90vh",borderRadius:"24px",boxShadow:"0 2px 2px"}}>
+      <div style={{maxWidth:"600px",minWidth:"300px", height:"90px"}}>
           <div style={{display:"flex",justifyContent:"space-around",alignItems:"center"}}>
-          <ul style={{display:"flex", listStyle:"none"}}>
+          <ul style={{display:"flex", listStyle:"none",padding:"2% 0 1%"}}>
                 {friendList?.map((obj,idx)=>{
                 return <li onClick={()=>{
 
-                }} key={idx} style={{width:60}}><Link href={`/GiftTree/${obj.UserID}`}><figure><img style={{width:40,borderRadius:"50%",border:`3px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)`}}  src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption><strong>{obj.NickName}</strong></figcaption></figure></Link></li>
+                }} key={idx} style={{width:80,margin:"2px 8px 0"}}><Link href={`/GiftTree/${obj.UserID}`}><figure><img style={{width:80,borderRadius:"50%",border:`5px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)`}}  src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption style={{textAlign:"center"}}><strong style={{fontSize:"1.2rem"}}>{obj.NickName}</strong></figcaption></figure></Link></li>
                 })}
             </ul>
+            
+            <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button>
             <div style={{position:"relative"}}>
+            
             <form onSubmit={(e)=>{
               e.preventDefault()
               console.log(searchInput.current.value)
@@ -70,9 +64,10 @@ const GiftTree = () => {
             </form>
             </div>
           </div>
-            <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button>
+        <hr/>
         </div>
       <ProductList visible={visible} setVisible={setVisible} />  
+      </div>
       
       <NavBar />  
 
