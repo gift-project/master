@@ -5,6 +5,7 @@ import { TeamC } from '../src/Context';
 import { useRouter } from 'next/router';
 
 const MyPage = () => {
+    const maxLength = 25;
     const [giftVisible,setGiftVisible] = useState(false);
     const [giveData,setGiveData] = useState();
     const [takeData,setTakeData] = useState();
@@ -46,7 +47,7 @@ const MyPage = () => {
                         <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center",width: "100%" ,padding: " 12.5px 10%"}}>
                           <img src={obj.image} alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
                           <div style={{width: "calc(100% - 70px)", margin: 0, paddingLeft: "20px"}}>
-                            <p style={{width: "100%", fontSize: "14px",overflow: "hidden" ,textOverflow: "ellipsis", whiteSpace: "nowrap"}}>{obj.title}</p>
+                            <p style={{width: "100%", fontSize: "14px",overflow: "hidden" ,textOverflow: "ellipsis", whiteSpace: "nowrap"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","")}</p>
                             <p style={{margin: "7px 0", fontSize: "12px"}}>{obj.price}</p>
                             <p style={{fontSize: "12px"}}>{obj.GiverName}에게 받음</p>
                           </div>
@@ -67,7 +68,7 @@ const MyPage = () => {
                       <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center",width: "100%" ,padding: " 12.5px 10%"}}>
                         <img src={obj.image} alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
                         <div style={{width: "calc(100% - 70px)", margin: 0, paddingLeft: "20px"}}>
-                          <p style={{width: "100%", fontSize: "14px",overflow: "hidden" ,textOverflow: "ellipsis", whiteSpace: "nowrap"}}>{obj.title}</p>
+                          <p style={{width: "100%", fontSize: "14px",overflow: "hidden" ,textOverflow: "ellipsis", whiteSpace: "nowrap"}}>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength)}</p>
                           <p style={{margin: "7px 0", fontSize: "12px"}}>{obj.price}</p>
                           <p style={{fontSize: "12px"}}>{obj.UserName}에게 보냄</p>
                         </div>

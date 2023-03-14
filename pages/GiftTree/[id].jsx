@@ -37,9 +37,9 @@ const GiftTree = () => {
   return (
     <div style={{display:"flex",flexDirection:"column",position:"relative"}}>
       <div style={{position:"fixed",top:"48%",left:"50%",transform:"translate(-50%,-50%)",zIndex:0,background:"rgba(255,255,255,0.6)",width:"550px",height:"90vh",borderRadius:"24px",boxShadow:"0 2px 2px"}}>
-      <div style={{maxWidth:"600px",minWidth:"300px", height:"90px"}}>
-          <div style={{display:"flex",justifyContent:"space-around",alignItems:"center"}}>
-          <ul style={{display:"flex", listStyle:"none",padding:"2% 0 1%"}}>
+      <div style={{maxWidth:"600px",minWidth:"300px", height:"auto"}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+          <ul style={{display:"flex",margin: "0 0 0 20px", padding:"2% 0", listStyle:"none"}}>
                 {friendList?.map((obj,idx)=>{
                 return <li onClick={()=>{
 
@@ -47,21 +47,20 @@ const GiftTree = () => {
                 })}
             </ul>
             
-            <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button>
-            <div style={{position:"relative"}}>
-            
-            <form onSubmit={(e)=>{
-              e.preventDefault()
-              console.log(searchInput.current.value)
-              axios.get('/api').then((res)=>{
-                let newValue = res.data.filter(obj => obj.NickName == searchInput.current.value)
-                console.log(newValue[0]?.NickName,'서치결과')
-                alert(newValue[0]?.NickName + "님이 검색되었습니다.")
-              })
-              }} style={{position:"absolute",right:0,top:0,display:"flex",justifyContent:"center",alignItems:"center"}}>
-                <input ref={searchInput} style={{width:10}} placeholder='친구 검색'/>
-                <button onClick={()=>{console.log(searchInput.current.style={transform:"scale:1"})}} style={{width:30,height:30}} type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-            </form>
+            {/* <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button> */}
+            <div style={{margin: 0, position:"relative"}}>
+              <form onSubmit={(e)=>{
+                e.preventDefault()
+                console.log(searchInput.current.value)
+                axios.get('/api').then((res)=>{
+                  let newValue = res.data.filter(obj => obj.NickName == searchInput.current.value)
+                  console.log(newValue[0]?.NickName,'서치결과')
+                  alert(newValue[0]?.NickName + "님이 검색되었습니다.")
+                })
+                }} style={{margin: "0 20px 0 0", position:"absolute",right:0,top: "-30px",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                  <input ref={searchInput} style={{width:10}} placeholder='친구 검색'/>
+                  <button onClick={()=>{console.log(searchInput.current.style={transform:"scale:1"})}} style={{width:30,height:30, border: "none", backgroundColor: "transparent"}} type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+              </form>
             </div>
           </div>
         <hr/>
