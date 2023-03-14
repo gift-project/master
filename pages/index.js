@@ -68,6 +68,8 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
+          zIndex:2,
+          position:"relative"
         }}
       > 
 
@@ -76,8 +78,8 @@ export default function Home() {
     alt="image1"
     style={{
       position: "absolute",
-      bottom: "61%",
-      left: "48%",
+      bottom: "63%",
+      left: "45%",
       transform: "translateX(-83%)",
       maxWidth: "500px",
       maxHeight: "500px",
@@ -92,7 +94,7 @@ export default function Home() {
     alt="image2"
     style={{
       position: "absolute",
-      bottom: "60%",
+      bottom: "63%",
       left: "50%",
       transform: "translateX(-4%)",
       maxWidth: "100%",
@@ -108,19 +110,19 @@ export default function Home() {
       bottom: "27%",
       left: "50%",
       transform: "translateX(-50%)",
-      maxWidth: "250px",
+      maxWidth: "280px",
       maxHeight: "250px",
       zIndex: 1,
     }}
   />
 
-      <div style={{marginBottom: "25%", textShadow: '0 2px 2px rgba(0, 0, 0, 0.3)'}}>
+      <div style={{marginBottom: "35%", textShadow: '0 2px 2px rgba(0, 0, 0, 0.3)'}}>
         <h1 style={{ marginBottom: "25px", fontSize: "3rem", letterSpacing: "-1px", fontFamily:"Neo4",  textAlign: "center"}}>
           소중한 사람에게
           <br />
           마음을 전해보세요 !
         </h1>
-         <p style={{ fontSize: "1.5rem", textAlign: "center", alignSelf: "center", color:"rgb(94 92 92)" }}>
+         <p style={{ fontSize: "1.5rem", textAlign: "center", alignSelf: "center", color:"rgb(94 92 92)", zIndex:2, position:"relative"}}>
           내가 받고싶은 선물을 위시리스트에 담아보세요<br />
           위시리스트를 공유하고, 선물을 주고받아보세요
          </p>
@@ -129,7 +131,7 @@ export default function Home() {
 
         <div
           style={{
-            marginBottom: "11%",
+            marginBottom: "15%",
             width: "70%",
           }}
         >
@@ -158,7 +160,7 @@ export default function Home() {
                 // padding: "10px 0",
                 cursor: "pointer",
                 margin: "5px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
                 background:"rgba(255, 255, 255, 0.5)",
                 outline: "none", // 클릭 시 파란색 아웃라인 제거
                }}/>
@@ -186,7 +188,7 @@ export default function Home() {
                   // padding: "10px 0",
                   cursor: "pointer",
                   margin: "5px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
                   background:"rgba(255, 255, 255, 0.5)",
                   outline: "none", // 클릭 시 파란색 아웃라인 제거
   
@@ -197,7 +199,7 @@ export default function Home() {
             <button
                     style={{
                       width:"98%",
-                      height: "50px",
+                      height: "34px",
                       background: "#b2d3e1",
                       color: "#fff",
                       border: "none",
@@ -205,7 +207,7 @@ export default function Home() {
                       padding: "10px 0",
                       cursor: "pointer",
                       margin: "5px",
-                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
                       
                      }}
               // style={{
@@ -260,21 +262,34 @@ export default function Home() {
         <div
           style={{
             display: modalOpen ? "flex" : "none",
-            width: "100%",
-            height: "100%",
-            left: "0",
-            top: "0",
-            backgroundColor: "#C7E5F2",
+            position: "absolute",
+            width: "85%",
+            height: "88%",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex:3,
+
+            position:"absolute",
+            overflow:"auto", 
+            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.5)",
+            borderRadius: "10px", 
+            backdropFilter:"blur(10px)"
+
+
+            // width:"100%",height:"90vh",paddingTop:"85px",  position:"relative"
+
           }}
         >
           <button
             style={{
+              position: "absolute",
+              top: "20px",
+              right: "20px",
               width: "30px",
               height: "30px",
-              right: "20px",
-              top: "20px",
-              border: "none",
-              backgroundColor: "transparent",
+              backgroundColor: "b2d3e1",
+              borderRadius:"10px"
             }}
             onClick={() => {
               setModalOpen(false);
@@ -286,9 +301,13 @@ export default function Home() {
           <form
             onSubmit={formSignUp}
             style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
-              flexWrap: "wrap",
               width: "70%",
               height: "25vh",
             }}
@@ -359,18 +378,44 @@ export default function Home() {
 
             <button
               style={{
-                display: "block",
-                width: "100%",
+                width:"98%",
+                height: "50px",
+                background: "#b2d3e1",
+                color: "#fff",
+                border: "none",
+                borderRadius: "10px",
                 padding: "10px 0",
                 cursor: "pointer",
-                border: "none",
-                borderRadius: "7px",
-                color: "#fff",
-                backgroundColor: "#219bc3",
+                margin: "5px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.7)", // 그림자 효과
+
               }}
               type="submit"
             >
               Sign Up
+
+{/* width:"98%",
+        height: "50px",
+        background: "#b2d3e1",
+        color: "#fff",
+        border: "none",
+        borderRadius: "10px",
+        padding: "10px 0",
+        cursor: "pointer",
+        margin: "5px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+         */}
+{/* 
+                width:"100%",
+                height: "50px",
+                border: "none",
+                borderRadius: "10px",
+                // padding: "10px 0",
+                cursor: "pointer",
+                margin: "5px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+                background:"rgba(255, 255, 255, 0.5)",
+                outline: "none", // 클릭 시 파란색 아웃라인 제거 */}
             </button>
           </form>
         </div>

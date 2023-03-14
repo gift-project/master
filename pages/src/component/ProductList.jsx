@@ -179,11 +179,11 @@ const ProductList = ({visible,setVisible}) => {
     })}
     </div>
     
+    {/* <h3>쇼핑카트</h3> */}
     <div style={{ 
       background:"#f9e9ee", width:"100%",height:"70vh",position:"absolute",top:0,left:0,display:visible?"block":"none",overflow:"auto", boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", borderRadius: "10px", padding: "20px"
       }}>
       <article style={{display:"flex",justifyContent:"space-around"}}>
-      {/* <h3>쇼핑카트</h3> */}
         <form onSubmit={ (e)=>{searchCg(e)} } 
         // style={{transform:"translateY(-11px)"}}
         >
