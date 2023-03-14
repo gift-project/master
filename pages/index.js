@@ -69,16 +69,67 @@ export default function Home() {
           flexDirection: "column",
           justifyContent: "flex-end",
         }}
-      >
-        <h1 style={{ marginBottom: "100px", fontSize: "3rem" }}>
+      > 
+
+<img
+    src="./img/Balloon-removebg-preview.png"
+    alt="image1"
+    style={{
+      position: "absolute",
+      bottom: "61%",
+      left: "48%",
+      transform: "translateX(-83%)",
+      maxWidth: "500px",
+      maxHeight: "500px",
+      zIndex: 1,
+        // width:"320px",
+      // height:"320px",
+      // outline: "5px solid rgba(255, 255, 255, 0.5)",
+    }}
+  />
+  <img
+    src="/img/pinkSun-removebg-preview.png"
+    alt="image2"
+    style={{
+      position: "absolute",
+      bottom: "60%",
+      left: "50%",
+      transform: "translateX(-4%)",
+      maxWidth: "100%",
+      maxHeight: "100%",
+      zIndex: 1,
+    }}
+  />
+  <img
+    src="/img/pinkCart-removebg-preview.png"
+    alt="image3"
+    style={{
+      position: "absolute",
+      bottom: "27%",
+      left: "50%",
+      transform: "translateX(-50%)",
+      maxWidth: "250px",
+      maxHeight: "250px",
+      zIndex: 1,
+    }}
+  />
+
+      <div style={{marginBottom: "25%", textShadow: '0 2px 2px rgba(0, 0, 0, 0.3)'}}>
+        <h1 style={{ marginBottom: "25px", fontSize: "3rem", letterSpacing: "-1px", fontFamily:"Neo4",  textAlign: "center"}}>
           소중한 사람에게
           <br />
-          마음을 전하세요.
+          마음을 전해보세요 !
         </h1>
+         <p style={{ fontSize: "1.5rem", textAlign: "center", alignSelf: "center", color:"rgb(94 92 92)" }}>
+          내가 받고싶은 선물을 위시리스트에 담아보세요<br />
+          위시리스트를 공유하고, 선물을 주고받아보세요
+         </p>
+      </div>
+
 
         <div
           style={{
-            marginBottom: "40%",
+            marginBottom: "11%",
             width: "70%",
           }}
         >
@@ -98,7 +149,20 @@ export default function Home() {
               }}
             >
               {/* <Form.Label htmlFor="">ID</Form.Label> */}
-              <Form.Control name="id" placeholder="아이디" type="text" />
+              <Form.Control name="id" placeholder="아이디" type="text"
+              style={{
+                width:"100%",
+                height: "50px",
+                border: "none",
+                borderRadius: "10px",
+                // padding: "10px 0",
+                cursor: "pointer",
+                margin: "5px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+                background:"rgba(255, 255, 255, 0.5)",
+                outline: "none", // 클릭 시 파란색 아웃라인 제거
+               }}/>
+
             </div>
 
             <div
@@ -114,21 +178,47 @@ export default function Home() {
                 id="inputPassword5"
                 aria-describedby="passwordHelpBlock"
                 name="passwords"
-              />
+                style={{
+                  width:"100%",
+                  height: "50px",
+                  border: "none",
+                  borderRadius: "10px",
+                  // padding: "10px 0",
+                  cursor: "pointer",
+                  margin: "5px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+                  background:"rgba(255, 255, 255, 0.5)",
+                  outline: "none", // 클릭 시 파란색 아웃라인 제거
+  
+                  
+                 }}/>
             </div>
 
             <button
-              style={{
-                display: "block",
-                width: "100%",
-                height: "50px",
-                padding: "10px 0",
-                cursor: "pointer",
-                border: "none",
-                borderRadius: "7px",
-                color: "#fff",
-                backgroundColor: "#219bc3",
-              }}
+                    style={{
+                      width:"98%",
+                      height: "50px",
+                      background: "#b2d3e1",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "10px 0",
+                      cursor: "pointer",
+                      margin: "5px",
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+                      
+                     }}
+              // style={{
+              //   display: "block",
+              //   width: "100%",
+              //   height: "50px",
+              //   padding: "10px 0",
+              //   cursor: "pointer",
+              //   border: "none",
+              //   borderRadius: "7px",
+              //   color: "#fff",
+              //   backgroundColor: "#219bc3",
+              // }}
               type="submit"
             >
               로그인

@@ -257,7 +257,8 @@ const ProductList = ({visible,setVisible}) => {
               width: "58px",
               height: "58px",
               objectFit:"cover",
-              borderRadius: "50%"
+              borderRadius: "50%",
+              outline: "5px solid rgba(255, 255, 255, 0.5)"
             }}/>  </figure> <span>{obj}</span> </li>
         })}
         </ul>
