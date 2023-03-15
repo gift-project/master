@@ -116,7 +116,7 @@ export default function Home() {
     }}
   />
 
-      <div style={{marginBottom: "35%", textShadow: '0 2px 2px rgba(0, 0, 0, 0.3)'}}>
+      <div style={{marginBottom: "35%"}}>
         <h1 style={{ marginBottom: "25px", fontSize: "3rem", letterSpacing: "-1px", fontFamily:"Neo4",  textAlign: "center"}}>
           소중한 사람에게
           <br />
