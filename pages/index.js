@@ -264,8 +264,8 @@ export default function Home() {
             display: modalOpen ? "flex" : "none",
             position: "absolute",
             width: "85%",
-            height: "88%",
-            top: "50%",
+            height: "45%",
+            top: "71%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             zIndex:3,
@@ -288,8 +288,17 @@ export default function Home() {
               right: "20px",
               width: "30px",
               height: "30px",
-              backgroundColor: "b2d3e1",
-              borderRadius:"10px"
+              // backgroundColor: "b2d3e1",
+              // borderRadius:"10px"
+              background: "#b2d3e1",
+              color: "#fff",
+              border: "none",
+              borderRadius: "10px",
+              padding: "10px 0",
+              cursor: "pointer",
+              margin: "5px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.7)", // 그림자 효과
+
             }}
             onClick={() => {
               setModalOpen(false);

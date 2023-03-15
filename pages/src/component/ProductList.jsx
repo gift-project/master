@@ -143,9 +143,21 @@ const ProductList = ({visible,setVisible}) => {
     <div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
     {Give && Give?.map((obj,idx)=>{
       return(        
-      <article key={"Tree"+idx} style={{width:"50%"}}>
+      <article key={"Tree"+idx}
+      style={{
+        background: "rgba(255, 255, 255, 0.5)",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", 
+        borderRadius: "10px",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+        padding:"10px",
+        margin: "20px",
+        width:"41%"
+        
+        }}>
       <img src={obj.image} style={{ width:"167px", height:"177px", paddingBottom:"10px" ,borderRadius:"10px"}}/>
-      <strong> {obj.title}</strong>
+      <strong style={{fontFamily:"Neo3"}}> {obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "")}</strong>
       <span>{obj.lprice}</span>
 
 
@@ -158,7 +170,17 @@ const ProductList = ({visible,setVisible}) => {
 }
 );userWishListGet()
 
-}}>삭제하기</button>
+}}style={{
+  background: "#b2d3e1",
+    color: "#fff",
+    border: "none",
+    borderRadius: "10px",
+    padding: "10px",
+    cursor: "pointer",
+    margin: "5px",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
+}}
+>삭제하기</button>
       
       
       :<button onClick={()=>{
@@ -171,6 +193,15 @@ const ProductList = ({visible,setVisible}) => {
         }
       );userWishListGet()
       
+      }} style={{
+        background: "#b2d3e1",
+          color: "#fff",
+          border: "none",
+          borderRadius: "10px",
+          padding: "10px",
+          cursor: "pointer",
+          margin: "5px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
       }}>선물하기</button>
       }
       </article>
