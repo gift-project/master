@@ -78,11 +78,11 @@ export default function Home() {
     alt="image1"
     style={{
       position: "absolute",
-      bottom: "63%",
-      left: "45%",
+      bottom: "28%",
+      left: "71%",
       transform: "translateX(-83%)",
-      maxWidth: "500px",
-      maxHeight: "500px",
+      maxWidth: "60%",
+      maxHeight: "100%",
       zIndex: 1,
         // width:"320px",
       // height:"320px",
@@ -94,15 +94,15 @@ export default function Home() {
     alt="image2"
     style={{
       position: "absolute",
-      bottom: "63%",
+      bottom: "66%",
       left: "50%",
       transform: "translateX(-4%)",
-      maxWidth: "100%",
+      maxWidth: "80%",
       maxHeight: "100%",
       zIndex: 1,
     }}
   />
-  <img
+  {/* <img
     src="/img/pinkCart-removebg-preview.png"
     alt="image3"
     style={{
@@ -114,9 +114,9 @@ export default function Home() {
       maxHeight: "250px",
       zIndex: 1,
     }}
-  />
+  /> */}
 
-      <div style={{marginBottom: "35%"}}>
+      <div style={{marginBottom: "43%"}}>
         <h1 style={{ marginBottom: "25px", fontSize: "3rem", letterSpacing: "-1px", fontFamily:"Neo4",  textAlign: "center"}}>
           소중한 사람에게
           <br />
@@ -132,7 +132,7 @@ export default function Home() {
         <div
           style={{
             marginBottom: "15%",
-            width: "70%",
+            width: "50%",
           }}
         >
           <form
@@ -153,14 +153,14 @@ export default function Home() {
               {/* <Form.Label htmlFor="">ID</Form.Label> */}
               <Form.Control name="id" placeholder="아이디" type="text"
               style={{
-                width:"100%",
-                height: "50px",
+                width:"98%",
+                height: "34px",
                 border: "none",
                 borderRadius: "10px",
                 // padding: "10px 0",
                 cursor: "pointer",
                 margin: "5px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
                 background:"rgba(255, 255, 255, 0.5)",
                 outline: "none", // 클릭 시 파란색 아웃라인 제거
                }}/>
@@ -181,14 +181,14 @@ export default function Home() {
                 aria-describedby="passwordHelpBlock"
                 name="passwords"
                 style={{
-                  width:"100%",
-                  height: "50px",
+                  width:"98%",
+                  height: "34px",
                   border: "none",
                   borderRadius: "10px",
                   // padding: "10px 0",
                   cursor: "pointer",
                   margin: "5px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
                   background:"rgba(255, 255, 255, 0.5)",
                   outline: "none", // 클릭 시 파란색 아웃라인 제거
   
@@ -207,7 +207,7 @@ export default function Home() {
                       padding: "10px 0",
                       cursor: "pointer",
                       margin: "5px",
-                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
                       
                      }}
               // style={{
@@ -263,8 +263,8 @@ export default function Home() {
           style={{
             display: modalOpen ? "flex" : "none",
             position: "absolute",
-            width: "85%",
-            height: "45%",
+            width: "80%",
+            height: "44%",
             top: "71%",
             left: "50%",
             transform: "translate(-50%, -50%)",
@@ -272,12 +272,10 @@ export default function Home() {
 
             position:"absolute",
             overflow:"auto", 
-            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.5)",
+            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.3)",
             borderRadius: "10px", 
-            backdropFilter:"blur(10px)"
-
-
-            // width:"100%",height:"90vh",paddingTop:"85px",  position:"relative"
+            backdropFilter:"blur(10px)",
+            background:"rgba(#f9e9ee, 0.5)",
 
           }}
         >
@@ -288,16 +286,15 @@ export default function Home() {
               right: "20px",
               width: "30px",
               height: "30px",
-              // backgroundColor: "b2d3e1",
-              // borderRadius:"10px"
+    
               background: "#b2d3e1",
               color: "#fff",
               border: "none",
-              borderRadius: "10px",
+              borderRadius: "50%",
               padding: "10px 0",
               cursor: "pointer",
               margin: "5px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.7)", // 그림자 효과
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", // 그림자 효과
 
             }}
             onClick={() => {
@@ -388,7 +385,7 @@ export default function Home() {
             <button
               style={{
                 width:"98%",
-                height: "50px",
+                height: "34px",
                 background: "#b2d3e1",
                 color: "#fff",
                 border: "none",
@@ -396,35 +393,13 @@ export default function Home() {
                 padding: "10px 0",
                 cursor: "pointer",
                 margin: "5px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.7)", // 그림자 효과
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", // 그림자 효과
 
               }}
               type="submit"
             >
               Sign Up
-
-{/* width:"98%",
-        height: "50px",
-        background: "#b2d3e1",
-        color: "#fff",
-        border: "none",
-        borderRadius: "10px",
-        padding: "10px 0",
-        cursor: "pointer",
-        margin: "5px",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
-         */}
-{/* 
-                width:"100%",
-                height: "50px",
-                border: "none",
-                borderRadius: "10px",
-                // padding: "10px 0",
-                cursor: "pointer",
-                margin: "5px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
-                background:"rgba(255, 255, 255, 0.5)",
-                outline: "none", // 클릭 시 파란색 아웃라인 제거 */}
+              
             </button>
           </form>
         </div>

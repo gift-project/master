@@ -123,10 +123,10 @@ const ProductList = ({visible,setVisible}) => {
 
 
   return (
-    <div style={{width:"100%",height:"90vh",paddingTop:"85px",  position:"relative"}}>
+    <div style={{width:"100%",height:"90vh",paddingTop:"19px",  position:"relative"}}>
     
      {/* 카테고리, 카테리고리 검색 보여주는곳 */}
-  <div style={{position:"relative",margin:"4%"}}>
+  <div style={{position:"relative", width:"100%"}}>
 
         {/* sql데이터 기반 화면에 뿌려보기 */}
         {/* {sqlGift?.map((obj, idx) => {
@@ -139,14 +139,19 @@ const ProductList = ({visible,setVisible}) => {
         <hr />
         {sqlFriends?.map((obj, idx) => { return <div key={"TestB"+idx}>{obj.NickName}</div> })} */}
 
+
+    
     {/* 트리공간에 선물 뿌리기 */}
-    <div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
+
+    {/* 선물하기, 삭제하기 박스크기 */}
+    <div style={{width:"113%", display:"flex", flexWrap:"wrap", left:"-19px", position:"absolute"}}>
+
     {Give && Give?.map((obj,idx)=>{
       return(        
       <article key={"Tree"+idx}
       style={{
-        background: "rgba(255, 255, 255, 0.5)",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", 
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+        background:"rgba(255, 255, 255, 0.5)",
         borderRadius: "10px",
         display: "flex",
         flexDirection: "column",
@@ -156,8 +161,14 @@ const ProductList = ({visible,setVisible}) => {
         width:"41%"
         
         }}>
-      <img src={obj.image} style={{ width:"167px", height:"177px", paddingBottom:"10px" ,borderRadius:"10px"}}/>
-      <strong style={{fontFamily:"Neo3"}}> {obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "")}</strong>
+      <img src={obj.image} style={{ 
+        width:"215px",
+        height:"177px",
+        borderRadius:"20px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+        marginBottom:"6px"
+        }}/>
+      <strong style={{fontFamily:"Neo3", padding:"6px"}}> {obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "")}</strong>
       <span>{obj.lprice}</span>
 
 
@@ -178,7 +189,7 @@ const ProductList = ({visible,setVisible}) => {
     padding: "10px",
     cursor: "pointer",
     margin: "5px",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)"
 }}
 >삭제하기</button>
       
@@ -194,14 +205,14 @@ const ProductList = ({visible,setVisible}) => {
       );userWishListGet()
       
       }} style={{
-        background: "#b2d3e1",
+          background: "#b2d3e1",
           color: "#fff",
           border: "none",
           borderRadius: "10px",
           padding: "10px",
           cursor: "pointer",
           margin: "5px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
       }}>선물하기</button>
       }
       </article>
@@ -212,7 +223,18 @@ const ProductList = ({visible,setVisible}) => {
     
     {/* <h3>쇼핑카트</h3> */}
     <div style={{ 
-      background:"#f9e9ee", width:"100%",height:"70vh",position:"absolute",top:0,left:0,display:visible?"block":"none",overflow:"auto", boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)", borderRadius: "10px", padding: "20px"
+      // background:"#f9e9ee",
+      width:"100%",
+      height:"70vh",
+      position:"absolute",
+      top:0,
+      left:0,
+      display:visible?"block":"none",
+      overflow:"auto",
+      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.3)",
+      borderRadius: "10px",
+      top:"15px",
+      backdropFilter:"blur(10px)"
       }}>
       <article style={{display:"flex",justifyContent:"space-around"}}>
         <form onSubmit={ (e)=>{searchCg(e)} } 
@@ -235,7 +257,7 @@ const ProductList = ({visible,setVisible}) => {
             padding: "10px", // 내부 여백 조정
 
             background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", // 그림자 효과
             }}
         
         />
@@ -254,7 +276,7 @@ const ProductList = ({visible,setVisible}) => {
             width: "71px",
             height: "50px",
 
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", // 그림자 효과
             }}
         
         >검색</button>
@@ -269,7 +291,7 @@ const ProductList = ({visible,setVisible}) => {
            justifyContent: "space-around",
            alignItems: "center",
            background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
-           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
            borderRadius: "10px", // 라운드 처리
           // display:"flex", listStyle:"none", padding:"2%", justifyContent:"space-around", alignItems:"center"
           }}>
@@ -279,7 +301,7 @@ const ProductList = ({visible,setVisible}) => {
             return <li onClick={ ()=>{GetApi(obj)} } 
             style={{
               fontFamily: "Neo3, sans-serif",backgroundColor:"#b2d3e1",width:58,height:58,margin:"1.5%", textAlign:"center",alignItems:"center", borderRadius:"50%",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)"
             }} 
             key={"categoryList"+idx}> 
             <figure style={{overflow:"hidden"}}>
@@ -289,7 +311,6 @@ const ProductList = ({visible,setVisible}) => {
               height: "58px",
               objectFit:"cover",
               borderRadius: "50%",
-              outline: "5px solid rgba(255, 255, 255, 0.5)"
             }}/>  </figure> <span>{obj}</span> </li>
         })}
         </ul>
@@ -301,12 +322,9 @@ const ProductList = ({visible,setVisible}) => {
           {thenApi && thenApi.map((obj, idx)=>{
             return <div key={"shopping" + idx}
               style={{
-                // width: "calc(50% - 1%)",/
-                // background: "rgba(255, 255, 255, 0.5)",
-                // boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.16), 0px 4px 16px rgba(0, 0, 0, 0.08)",
-
+              
                 background: "rgba(255, 255, 255, 0.5)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", 
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", 
                 borderRadius: "10px",
                 display: "flex",
                 flexDirection: "column",

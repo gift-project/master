@@ -25,7 +25,7 @@ const MyPage = () => {
     },[])
 
     return (
-    <div style={{width: "100%", height: "100%", position: "relative", paddingTop:"10%", backgroundColor: "#f4f5f9"}}>
+    <div style={{width: "100%", height: "100%", position: "relative", paddingTop:"10%"}}>
       {/* <div style={{position:"fixed",top:"48%",left:"50%",transform:"translate(-50%,-50%)",zIndex:0,background:"rgba(255,255,255,0.6)",width:"100%", maxWidth: "600px" ,height:"90vh",borderRadius:"24px",boxShadow:"0 2px 2px"}}> */}
 
         <div style={{position: "absolute", right: "30px", top: "30px"}}>

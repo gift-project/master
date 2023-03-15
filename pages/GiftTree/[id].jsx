@@ -38,22 +38,40 @@ const GiftTree = () => {
     <div style={{display:"flex",flexDirection:"column",position:"relative"}}>
       <div style={{
         position:"fixed",
-        top:"48%",
+        top:"45%",
         left:"50%",
         transform:"translate(-50%,-50%)",
         zIndex:0,
-        background:"rgba(255,255,255,0.6)",
         width:"550px",
         height:"90vh",
         borderRadius:"24px",
+        
    
         }}>
-      <div style={{maxWidth:"600px",minWidth:"300px", height:"auto"}}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+      <div style={{maxWidth:"600px",minWidth:"300px", height:"auto", paddingTop:"3%"}}>
+          <div style={{
+            display:"flex",
+            justifyContent:"space-between",
+            alignItems:"center",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            borderRadius:"10px",
+            width:"100%"
+            }}>
             <ul style={{display:"flex",margin: "0 0 0 20px", padding:"2% 0", listStyle:"none"}}>
                   {friendList?.map((obj,idx)=>{
                   return <li onClick={()=>{
-                  }} key={idx} style={{width:55,margin:"2px 8px 0"}}><Link href={`/GiftTree/${obj.UserID}`}><figure><img style={{width:55,borderRadius:"50%",border:`5px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)`}}  src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption style={{textAlign:"center"}}><strong style={{fontSize:"13px"}}>{obj.NickName}</strong></figcaption></figure></Link></li>
+                  }} key={idx} style={{width:55,margin:"2px 8px 0"}}><Link href={`/GiftTree/${obj.UserID}`}><figure>
+
+                    {/* 친구 목록 랜덤 보더색깔 */}
+                    {/* border:`5px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)` */}
+
+                    <img 
+                    style={{
+                      width:55,
+                      borderRadius:"50%",
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+                    }}
+                      src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption style={{textAlign:"center", fontFamily:"Neo3"}}><strong style={{fontSize:"13px"}}>{obj.NickName}</strong></figcaption></figure></Link></li>
                   })}
 
               </ul>
@@ -68,8 +86,8 @@ const GiftTree = () => {
                   alert(newValue[0]?.NickName + "님이 검색되었습니다.")
                 })
                 }} style={{margin: "0 20px 0 0", position:"absolute",right:0,top: "-30px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                  <input ref={searchInput} style={{transform:"scale:(0)"}} placeholder='친구 검색'/>
-                  <button onClick={()=>{console.log(searchInput.current.style={transform:"scale:(1)"})}} style={{width:30,height:30, border: "none", backgroundColor: "transparent"}} type="submit">
+                  <input ref={searchInput} style={{transform:"scale(0)"}} placeholder='친구 검색'/>
+                  <button onClick={()=>{console.log(searchInput.current.style={transform:"scale(1)"})}} style={{width:30,height:30, border: "none", backgroundColor: "transparent"}} type="submit">
                     {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
                     <FontAwesomeIcon icon={faUserPlus}  style={{width: "25px"}} />
                   </button>
@@ -79,7 +97,6 @@ const GiftTree = () => {
             </div>
             {/* <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button> */}
           
-        <hr/>
         </div>
         
       {/* 위시리스트 -> 선물하기 클릭시 담기는곳 */}
