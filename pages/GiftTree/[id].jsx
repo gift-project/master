@@ -68,8 +68,8 @@ const GiftTree = () => {
                   alert(newValue[0]?.NickName + "님이 검색되었습니다.")
                 })
                 }} style={{margin: "0 20px 0 0", position:"absolute",right:0,top: "-30px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                  <input ref={searchInput} style={{transform:"scale:(0)"}} placeholder='친구 검색'/>
-                  <button onClick={()=>{console.log(searchInput.current.style={transform:"scale:(1)"})}} style={{width:30,height:30, border: "none", backgroundColor: "transparent"}} type="submit">
+                  <input ref={searchInput} style={{transform:"scale(0)"}} placeholder='친구 검색'/>
+                  <button onClick={()=>{console.log(searchInput.current.style={transform:"scale(1)"})}} style={{width:30,height:30, border: "none", backgroundColor: "transparent"}} type="submit">
                     {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
                     <FontAwesomeIcon icon={faUserPlus}  style={{width: "25px"}} />
                   </button>
