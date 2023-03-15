@@ -7,7 +7,7 @@ import styles from "./test.module.css";
 import ProductList from '../src/component/productList';
 import NavBar from '../src/component/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router';
 
 const GiftTree = () => {
@@ -50,14 +50,16 @@ const GiftTree = () => {
         }}>
       <div style={{maxWidth:"600px",minWidth:"300px", height:"auto"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-          <ul style={{display:"flex",margin: "0 0 0 20px", padding:"2% 0", listStyle:"none"}}>
-                {friendList?.map((obj,idx)=>{
-                return <li onClick={()=>{
+            <ul style={{display:"flex",margin: "0 0 0 20px", padding:"2% 0", listStyle:"none"}}>
+                  {friendList?.map((obj,idx)=>{
+                  return <li onClick={()=>{
+                  }} key={idx} style={{width:55,margin:"2px 8px 0"}}><Link href={`/GiftTree/${obj.UserID}`}><figure><img style={{width:55,borderRadius:"50%",border:`5px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)`}}  src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption style={{textAlign:"center"}}><strong style={{fontSize:"13px"}}>{obj.NickName}</strong></figcaption></figure></Link></li>
+                  })}
 
-                }} key={idx} style={{width:80,margin:"2px 8px 0"}}><Link href={`/GiftTree/${obj.UserID}`}><figure><img style={{width:80,borderRadius:"50%",border:`5px solid rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.8)`}}  src={`/img/Profile${(Math.floor(Math.random()*5)+1)}.jpg`}/><figcaption style={{textAlign:"center"}}><strong style={{fontSize:"1.2rem"}}>{obj.NickName}</strong></figcaption></figure></Link></li>
-                })}
-            <div style={{margin: 0, position:"relative"}}>
-              <form onSubmit={(e)=>{
+              </ul>
+
+              <div style={{margin: 0, position:"relative"}}>
+                <form onSubmit={(e)=>{
                 e.preventDefault()
                 console.log(searchInput.current.value)
                 axios.get('/api').then((res)=>{
@@ -66,11 +68,13 @@ const GiftTree = () => {
                   alert(newValue[0]?.NickName + "님이 검색되었습니다.")
                 })
                 }} style={{margin: "0 20px 0 0", position:"absolute",right:0,top: "-30px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                  <input ref={searchInput} style={{width:10}} placeholder='친구 검색'/>
-                  <button onClick={()=>{console.log(searchInput.current.style={transform:"scale:1"})}} style={{width:30,height:30, border: "none", backgroundColor: "transparent"}} type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-              </form>
-            </div>
-            </ul>
+                  <input ref={searchInput} style={{transform:"scale:(0)"}} placeholder='친구 검색'/>
+                  <button onClick={()=>{console.log(searchInput.current.style={transform:"scale:(1)"})}} style={{width:30,height:30, border: "none", backgroundColor: "transparent"}} type="submit">
+                    {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
+                    <FontAwesomeIcon icon={faUserPlus}  style={{width: "25px"}} />
+                  </button>
+                </form>
+              </div>
             
             </div>
             {/* <button onClick={()=>{setUserLogin(false)}}>로그아웃버튼(임시)</button> */}

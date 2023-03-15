@@ -3,14 +3,17 @@ import React,{useContext, useEffect, useRef, useState} from 'react'
 import NavBar from '../src/component/NavBar'
 import { TeamC } from '../src/Context';
 import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
 const MyPage = () => {
     const maxLength = 25;
     const [giftVisible,setGiftVisible] = useState(false);
     const [giveData,setGiveData] = useState();
     const [takeData,setTakeData] = useState();
-    const {userLogin} = useContext(TeamC)
+    const {userLogin, setUserLogin} = useContext(TeamC);
     const router = useRouter();
+
     if(userLogin === false){
       router?.push("/")
     }
@@ -22,8 +25,12 @@ const MyPage = () => {
     },[])
 
     return (
-    <div style={{width: "100%", height: "100%", paddingTop:"10%", backgroundColor: "#f4f5f9"}}>
+    <div style={{width: "100%", height: "100%", position: "relative", paddingTop:"10%", backgroundColor: "#f4f5f9"}}>
       {/* <div style={{position:"fixed",top:"48%",left:"50%",transform:"translate(-50%,-50%)",zIndex:0,background:"rgba(255,255,255,0.6)",width:"100%", maxWidth: "600px" ,height:"90vh",borderRadius:"24px",boxShadow:"0 2px 2px"}}> */}
+
+        <div style={{position: "absolute", right: "30px", top: "30px"}}>
+          <button style={{display: "block",  margin: 0, border: "none", backgroundColor: "transparent"}} onClick={()=>{setUserLogin(false)}}><FontAwesomeIcon icon={faPowerOff} style={{width: "25px"}} /></button>
+        </div>
 
         <div style={{width: "90%", margin: "0 auto 50px"}}>
           <div>
