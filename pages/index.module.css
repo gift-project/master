@@ -1,0 +1,188 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+  }
+  
+  .image1 {
+  position: absolute;
+  bottom: 28%;
+  left: 71%;
+  transform: translateX(-83%);
+  max-width: 60%;
+  max-height: 100%;
+  z-index: 1;
+  }
+  .image2 {
+    position: absolute;
+    bottom: 66%;
+    left: 50%;
+    transform: translateX(-4%);
+    max-width: 80%;
+    max-height: 100%;
+    z-index: 1;
+    }
+    
+    .textContainer {
+    margin-bottom: 43%;
+    }
+    
+    .title {
+    margin-bottom: 25px;
+    font-size: 3rem;
+    letter-spacing: -1px;
+    font-family: "Neo4";
+    text-align: center;
+    }
+    
+    .subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    align-self: center;
+    color: rgb(94, 92, 92);
+    position: relative;
+    z-index: 2;
+    }
+    
+    .formContainer {
+    margin-bottom: 15%;
+    width: 50%;
+    }
+    
+    .inputWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .input {
+    width: 98%;
+    height: 34px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.5);
+    outline: none;
+    }
+    
+    .loginButton {
+    width: 98%;
+    height: 34px;
+    background: #b2d3e1;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 0;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .signupWrapper {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    }
+    
+    .signupText {
+    font-family: "Neo3";
+    font-size: 1rem;
+    }
+    
+    .signupButton {
+    border: none;
+    color: #219bc3;
+    background-color: transparent;
+    font-size: 1rem;
+    margin-left: 10px;
+    }
+    
+    .modal {
+    display: flex;
+    position: absolute;
+    width: 80%;
+    height: 44%;
+    top: 71%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    position: absolute;
+    overflow: auto;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    background: rgba(#f9e9ee, 0.5);
+    }
+    
+    .modalHidden {
+    display: none;
+    }
+    
+    .modalCloseButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background: #b2d3e1;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 0;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    
+    .modalForm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    height: 25vh
+  }
+
+    .modalInputWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    }
+    
+    .modalInput {
+    width: 98%;
+    height: 34px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.5);
+    outline: none;
+    }
+    
+    .signupSubmitButton {
+    width: 98%;
+    height: 34px;
+    background: #b2d3e1;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 0;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+ 
