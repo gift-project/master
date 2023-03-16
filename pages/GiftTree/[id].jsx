@@ -23,7 +23,7 @@ const GiftTree = () => {
   const [inputVisible, setInputVisible] = useState(false);
   const searchInput = useRef();
 
-  // 인풋창 표시 상태를 변경하는 함수를 작성하세요.
+  // 인풋창 표시 상태를 변경하는 함수를 작성하세요./////////////
   const toggleInput = () => {
     setInputVisible(!inputVisible);
   };
