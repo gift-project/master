@@ -19,9 +19,6 @@ const GiftRoute = () => {
 
   const { userLogin, setUserLogin } = useContext(TeamC)
   const router = useRouter();
-  if (userLogin === false) {
-    router?.push("/")
-  }
 
   const [inputVisible, setInputVisible] = useState(false);
   const searchInput = useRef();

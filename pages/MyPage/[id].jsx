@@ -2,7 +2,6 @@ import axios from 'axios';
 import React,{useContext, useEffect, useRef, useState} from 'react'
 import NavBar from '../src/component/NavBar'
 import { TeamC } from '../src/Context';
-import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,11 +11,7 @@ const MyRoute = () => {
     const [giveData,setGiveData] = useState();
     const [takeData,setTakeData] = useState();
     const {userLogin, setUserLogin} = useContext(TeamC);
-    const router = useRouter();
 
-    if(userLogin === false){
-      router?.push("/")
-    }
 
     useEffect(()=>{
       axios.get('/api/gift',{params:{userLogin:userLogin.UserID}}).then(res=>setTakeData(res.data))
