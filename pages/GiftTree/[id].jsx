@@ -3,7 +3,7 @@ import Link from 'next/link'
 import axios from 'axios';
 import { useContext } from 'react';
 import { TeamC } from '../src/Context';
-import ProductList from '../src/component/productList';
+import ProductList from '../src/component/ProductList';
 import NavBar from '../src/component/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons'
