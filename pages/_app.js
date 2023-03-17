@@ -1,10 +1,9 @@
-
 // import '@/pages/src/styles/globals.css'
-import './src/styles/globals.css'
+import "@/styles/globals.css";
 
-import Context from './src/Context'
-import NavBar from './src/component/NavBar'
-import Head from 'next/head'
+import Context from "./src/Context";
+import NavBar from "./src/component/NavBar";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -19,11 +18,10 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="free-sticker-rubber-duck-4861674.png" />
       </Head>
       <main>
-
         <Component {...pageProps} />
       </main>
       <NavBar />
       {/* 로그인 구현하고나면 지울예정 */}
     </Context>
-  )
+  );
 }

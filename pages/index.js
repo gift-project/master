@@ -7,7 +7,7 @@ import { TeamC } from "./src/Context";
 import { useState } from "react";
 import { Translate } from "@mui/icons-material";
 
-import styles from './src/styles/index.module.css';
+import styles from "@/styles/index.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +15,7 @@ export default function Home() {
   const { setUserLogin } = useContext(TeamC);
   const router = useRouter();
 
-  function formLogin(e) { }
+  function formLogin(e) {}
   const [modalOpen, setModalOpen] = useState(false);
 
   function formLogin(e) {
@@ -61,74 +61,114 @@ export default function Home() {
 
   return (
     <>
-    <div className={styles.container}>
-    {/* dddddddddddddd */}
-    <img src="./img/Balloon-removebg-preview.png" alt="image1" className={styles.image1} />
-    <img src="/img/pinkSun-removebg-preview.png" alt="image2" className={styles.image2} /> <div className={styles.textContainer}>
-      <h1 className={styles.title}>
-        소중한 사람에게
-        <br />
-        마음을 전해보세요 !
-      </h1>
-      <p className={styles.subtitle}>
-        내가 받고싶은 선물을 위시리스트에 담아보세요<br />
-        위시리스트를 공유하고, 선물을 주고받아보세요
-      </p>
-    </div>
-
-    <div className={styles.formContainer}>
-      <form method="post" onSubmit={formLogin}>
-        <div className={styles.inputWrapper}>
-          <Form.Control name="id" placeholder="아이디" type="text" className={styles.input} />
+      <div className={styles.container}>
+        {/* dddddddddddddd */}
+        <img
+          src="./img/Balloon-removebg-preview.png"
+          alt="image1"
+          className={styles.image1}
+        />
+        <img
+          src="/img/pinkSun-removebg-preview.png"
+          alt="image2"
+          className={styles.image2}
+        />{" "}
+        <div className={styles.textContainer}>
+          <h1 className={styles.title}>
+            소중한 사람에게
+            <br />
+            마음을 전해보세요 !
+          </h1>
+          <p className={styles.subtitle}>
+            내가 받고싶은 선물을 위시리스트에 담아보세요
+            <br />
+            위시리스트를 공유하고, 선물을 주고받아보세요
+          </p>
         </div>
+        <div className={styles.formContainer}>
+          <form method="post" onSubmit={formLogin}>
+            <div className={styles.inputWrapper}>
+              <Form.Control
+                name="id"
+                placeholder="아이디"
+                type="text"
+                className={styles.input}
+              />
+            </div>
 
-        <div className={styles.inputWrapper}>
-          <Form.Control type="password" placeholder="비밀번호" id="inputPassword5" aria-describedby="passwordHelpBlock" name="passwords" className={styles.input} />
+            <div className={styles.inputWrapper}>
+              <Form.Control
+                type="password"
+                placeholder="비밀번호"
+                id="inputPassword5"
+                aria-describedby="passwordHelpBlock"
+                name="passwords"
+                className={styles.input}
+              />
+            </div>
+
+            <button className={styles.loginButton} type="submit">
+              로그인
+            </button>
+          </form>
+
+          <div className={styles.signupWrapper}>
+            <span className={styles.signupText}>계정이 없으신가요?</span>
+            <button
+              className={styles.signupButton}
+              onClick={() => {
+                setModalOpen(!modalOpen);
+              }}
+            >
+              회원가입
+            </button>
+          </div>
         </div>
+        <div className={modalOpen ? styles.modal : styles.modalHidden}>
+          <button
+            className={styles.modalCloseButton}
+            onClick={() => {
+              setModalOpen(false);
+            }}
+          >
+            X
+          </button>
 
-        <button className={styles.loginButton} type="submit">
-          로그인
-        </button>
-      </form>
+          <form onSubmit={formSignUp} className={styles.modalForm}>
+            <div className={styles.modalInputWrapper}>
+              <Form.Control placeholder="Id" name="signid" type="text" />
+            </div>
 
-      <div className={styles.signupWrapper}>
-        <span className={styles.signupText}>
-          계정이 없으신가요?
-        </span>
-        <button className={styles.signupButton} onClick={() => { setModalOpen(!modalOpen); }}>
-          회원가입
-        </button>
+            <div className={styles.modalInputWrapper}>
+              <Form.Control
+                placeholder="Password"
+                name="signpasswords"
+                type="password"
+              />
+            </div>
+
+            <div className={styles.modalInputWrapper}>
+              <Form.Control
+                placeholder="BirthDay"
+                name="birthday"
+                type="text"
+              />
+            </div>
+
+            <div className={styles.modalInputWrapper}>
+              <Form.Control
+                placeholder="Nickname"
+                name="nickname"
+                type="text"
+              />
+            </div>
+
+            <button className={styles.signupSubmitButton} type="submit">
+              Sign Up
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-
-    <div className={modalOpen ? styles.modal : styles.modalHidden}>
-      <button className={styles.modalCloseButton} onClick={() => { setModalOpen(false); }}>
-        X
-      </button>
-
-      <form onSubmit={formSignUp} className={styles.modalForm}>
-        <div className={styles.modalInputWrapper}>
-          <Form.Control placeholder="Id" name="signid" type="text" />
-        </div>
-
-        <div className={styles.modalInputWrapper}>
-          <Form.Control placeholder="Password" name="signpasswords" type="password" />
-        </div>
-
-        <div className={styles.modalInputWrapper}>
-          <Form.Control placeholder="BirthDay" name="birthday" type="text" />
-        </div>
-
-        <div className={styles.modalInputWrapper}>
-          <Form.Control placeholder="Nickname" name="nickname" type="text" />
-        </div>
-
-        <button className={styles.signupSubmitButton} type="submit">
-          Sign Up
-        </button>
-      </form>
-    </div>
-  </div>
-</>
-);
+    </>
+  );
 }

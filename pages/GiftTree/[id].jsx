@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router';
 
-import styles from "../src/styles/id.module.css";
+import styles from "@/styles/id.module.css";
 
 import { padding } from '@mui/system';
 
