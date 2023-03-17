@@ -62,7 +62,7 @@ export default function Home() {
   return (
     <>
     <div className={styles.container}>
-
+    {/* ddddddddddd */}
     <img src="./img/Balloon-removebg-preview.png" alt="image1" className={styles.image1} />
     <img src="/img/pinkSun-removebg-preview.png" alt="image2" className={styles.image2} /> <div className={styles.textContainer}>
       <h1 className={styles.title}>
