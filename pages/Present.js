@@ -21,20 +21,20 @@ const Present = () => {
 
 
   // const ddd = (friendBday[0].Birth);
-  if(friendBday.length > 0){
+  if (friendBday.length > 0) {
     // console.log(friendBday[0].Birth, "생일")
     const datee = new Date(friendBday[0].Birth);
     const datee2 = new Date();
-    if(datee2 > datee){
+    if (datee2 > datee) {
       console.log('가깝다')
-    }else{
+    } else {
       console.log('멀다')
     }
-  } 
+  }
 
   console.log(friendBday)
 
-  console.log(  24*60*60*1000 )
+  console.log(24 * 60 * 60 * 1000)
 
 
   // if(ddd > datee){
