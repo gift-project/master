@@ -38,6 +38,7 @@
     font-size: 3rem;
     letter-spacing: -1px;
     text-align: center;
+    font-family: "WOFF2_3";
     }
     
     .subtitle {
@@ -47,6 +48,7 @@
     color: rgb(94, 92, 92);
     position: relative;
     z-index: 2;
+    
     }
     
     .formContainer {

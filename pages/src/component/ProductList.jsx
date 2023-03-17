@@ -320,7 +320,7 @@ const ProductList = ({visible,setVisible}) => {
 
         
         {/* 카테고리 클릭시 나오는 아이템목록22222 */}
-        <div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
+        <div style={{width:"104%", display:"flex", flexWrap:"wrap"}}>
 
           {thenApi && thenApi.map((obj, idx)=>{
             return <div key={"shopping" + idx}
@@ -419,7 +419,7 @@ const ProductList = ({visible,setVisible}) => {
         position:"absolute",
         bottom:"14%",
         right:"3%",
-        zIndex:"9"
+        zIndex:"0"
         }}
       onClick={() => { setVisible(!visible); } }>WishList
     </button>

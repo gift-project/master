@@ -1,5 +1,7 @@
 
-import '@/pages/src/styles/globals.css'
+// import '@/pages/src/styles/globals.css'
+import './src/styles/globals.css'
+
 import Context from './src/Context'
 import NavBar from './src/component/NavBar'
 import Head from 'next/head'
