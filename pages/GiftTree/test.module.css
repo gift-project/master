@@ -1,0 +1,4 @@
+
+.Gift:nth-child(even) {
+  border-radius: 50%;
+}
