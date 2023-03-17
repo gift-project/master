@@ -7,7 +7,7 @@ import { TeamC } from "./src/Context";
 import { useState } from "react";
 import { Translate } from "@mui/icons-material";
 
-import styles from './index.module.css';
+import styles from './src/styles/index.module.css';
 
 const inter = Inter({ subsets: ["latin"] });
 

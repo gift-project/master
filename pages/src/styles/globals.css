@@ -8,31 +8,31 @@
 
 @font-face {
   font-family: 'Neo1';
-  src: url('../public/font/NanumSquareNeoTTF-aLt.woff2');
+  src: url('/public/font/NanumSquareNeoTTF-aLt.woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Neo2';
-  src: url('../public/font/NanumSquareNeoTTF-bRg.woff2');
+  src: url('/public/font/NanumSquareNeoTTF-bRg.woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Neo3';
-  src: url('../public/font/NanumSquareNeoTTF-cBd.woff2');
+  src: url('/public/font/NanumSquareNeoTTF-cBd.woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Neo4';
-  src: url('../public/font/NanumSquareNeoTTF-dEb.woff2');
+  src: url('/public/font/NanumSquareNeoTTF-dEb.woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Neo5';
-  src: url('../public/font/NanumSquareNeoTTF-eHv.woff2');
+  src: url('/public/font/NanumSquareNeoTTF-eHv.woff2');
   font-weight: normal;
   font-style: normal;
 }

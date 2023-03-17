@@ -32,7 +32,7 @@ app.get('/search/shop', function (req, res) {
     });
 });
 
-app.listen(4300, function () {
+app.listen(4000, function () {
     console.log('http://127.0.0.1:4000/search/shop?query=검색어 app listening on port 4000!');
 });
 

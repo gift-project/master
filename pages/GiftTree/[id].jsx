@@ -9,8 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router';
 
-import styles from "./id.module.css";
+import styles from "../src/styles/id.module.css";
+
 import { padding } from '@mui/system';
+
+import { motion } from "framer-motion";
 
 const GiftTree = () => {
 
@@ -92,8 +95,10 @@ const GiftTree = () => {
                   });
                 }}
                 className={styles.searchForm}
-              >
-                <input
+              > 
+
+           
+                <motion.input
                   ref={searchInput}
                   className={`${styles.searchInput} ${inputVisible ? styles.showInput : styles.hideInput}`}
                   placeholder='친구 검색'
@@ -109,7 +114,11 @@ const GiftTree = () => {
                     outline: "none",
                     padding:"10px"
                   }}
+                  initial={{ opacity: 0, x: '-10px' }}
+                  animate={{ opacity: inputVisible ? 1 : 0, x: inputVisible ? '0px' : '-10px' }}
+                  transition={{ duration: 0.2 }}
                 />
+
                 <button onClick={toggleInput} className={styles.buttonStyle} type='button'>
                   <FontAwesomeIcon icon={faUserPlus} style={{ width: '25px' }} />
                 </button>

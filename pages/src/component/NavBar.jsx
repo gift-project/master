@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faUser, faPowerOff, faGift } from '@fortawesome/free-solid-svg-icons'
 import { TeamC } from '../Context';
 
-import styles from './navbar.module.css';
+import styles from '../styles/navbar.module.css';
 
 const NavBar = () => {
 
