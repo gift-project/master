@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
-const MyPage = () => {
+const MyRoute = () => {
     const maxLength = 25;
     const [giftVisible,setGiftVisible] = useState(false);
     const [giveData,setGiveData] = useState();
@@ -93,4 +93,4 @@ const MyPage = () => {
   )
 }
 
-export default MyPage
+export default MyRoute

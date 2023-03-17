@@ -15,7 +15,7 @@ import { padding } from '@mui/system';
 
 import { motion } from "framer-motion";
 
-const GiftTree = () => {
+const GiftRoute = () => {
 
   const { userLogin, setUserLogin } = useContext(TeamC)
   const router = useRouter();
@@ -136,7 +136,7 @@ const GiftTree = () => {
   );
 }
 
-export default GiftTree
+export default GiftRoute
 
 
 
