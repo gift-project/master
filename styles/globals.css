@@ -6,6 +6,14 @@
   /* background-color: rgba(0, 0, 0, 0.7); */
 }
 
+body{
+  /* background-color:lightsteelblue; */
+  /* background-color:#b2d3e1; */
+  background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
 span{
   font-family: 'Times New Roman';
   font-size: 16px;
@@ -18,14 +26,6 @@ p{
 
 h1,h2,h3{letter-spacing: -2px;}
 
-body{
-  /* background-color:lightsteelblue; */
-  /* background-color:#b2d3e1; */
-  background: #12c2e9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
 
 ::-webkit-scrollbar {
   display: none;
@@ -38,6 +38,10 @@ a:visited,
 a:link {
   text-decoration: none;
   color: black;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 #__next {
