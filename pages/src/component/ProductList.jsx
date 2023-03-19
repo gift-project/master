@@ -22,6 +22,9 @@ const ProductList = ({visible,setVisible}) => {
     // 사러가기 클릭 -> 트리공간에 뿌려주기
     const [Give,SetGive] = useState([]);
 
+    // 위시리스트 닫는버튼
+    const [isOpen, setIsOpen] = useState(true);
+
     //ver222<-push
     //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
     //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
@@ -37,6 +40,9 @@ const ProductList = ({visible,setVisible}) => {
     
     const a = useRef(true);
 
+    const handleOnClick = () => {
+      setIsOpen(false);
+    };
     
 
     //console.log(gift)
@@ -120,7 +126,20 @@ const ProductList = ({visible,setVisible}) => {
 
 
   return (
-    <div style={{width:"100%",height:"90vh",paddingTop:"19px",  position:"relative"}}>
+    <div style={{
+      // width:"100%",
+      // height:"90vh",
+      // paddingTop:"5px",
+      // position:"relative"
+      // display:"flex",
+      // justifyContent:"space-between",
+      // alignItems:"center",
+      // boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+      // borderRadius:"10px",
+      // width:"100%"
+
+      
+      }}>
     
      {/* 카테고리, 카테리고리 검색 보여주는곳 */}
   <div style={{position:"relative", width:"100%"}}>
@@ -141,21 +160,30 @@ const ProductList = ({visible,setVisible}) => {
     {/* 트리공간에 선물 뿌리기 */}
 
     {/* 선물하기, 삭제하기 박스크기 */}
-    <div style={{width:"113%", display:"flex", flexWrap:"wrap", left:"-19px", position:"absolute"}}>
+    <div style={{
+      // width:"113%", display:"flex", flexWrap:"wrap", left:"-19px", position:"absolute"
+          position:"relative",
+      display:"flex",
+      justifyContent:"space-between",
+      alignItems:"center",
+      borderRadius:"10px",
+      width:"100%"
+      }}>
 
     {Give && Give?.map((obj,idx)=>{
       return(        
       <article key={"Tree"+idx}
       style={{
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
-        background:"rgba(255, 255, 255, 0.5)",
         borderRadius: "10px",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
         padding:"10px",
-        margin: "20px",
-        width:"41%"
+        // margin: "20px",
+        width:"44%",
+        // minWidth: "48%",
+
         
         }}>
       <img src={obj.image} style={{ 
@@ -222,16 +250,16 @@ const ProductList = ({visible,setVisible}) => {
     <div style={{ 
       // background:"#f9e9ee",
       width:"100%",
-      height:"70vh",
+      height:"65vh",
       position:"absolute",
       top:0,
       left:0,
       display:visible?"block":"none",
       overflow:"auto",
-      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.3)",
+      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.15)",
       borderRadius: "10px",
       top:"15px",
-      backdropFilter:"blur(10px)",
+      backdropFilter:"blur(20px)",
       zIndex:"1"
       }}>
       <article style={{display:"flex",justifyContent:"space-around"}}>
@@ -255,7 +283,7 @@ const ProductList = ({visible,setVisible}) => {
             padding: "10px", // 내부 여백 조정
 
             background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", // 그림자 효과
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
             }}
         
         />
@@ -274,10 +302,12 @@ const ProductList = ({visible,setVisible}) => {
             width: "71px",
             height: "50px",
 
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", // 그림자 효과
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
             }}
         
         >검색</button>
+
+
         </form>
       </article>
 
@@ -289,7 +319,7 @@ const ProductList = ({visible,setVisible}) => {
            justifyContent: "space-around",
            alignItems: "center",
            background: "rgba(255, 255, 255, 0.5)", // 투명도 조정
-           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)", // 그림자 효과
+           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
            borderRadius: "10px", // 라운드 처리
           // display:"flex", listStyle:"none", padding:"2%", justifyContent:"space-around", alignItems:"center"
           }}>
@@ -309,7 +339,8 @@ const ProductList = ({visible,setVisible}) => {
               height: "58px",
               objectFit:"cover",
               borderRadius: "50%",
-            }}/>  </figure> <span>{obj}</span> </li>
+            }}/>  </figure> <span style={{
+              fontWeight:"bold"}}>{obj}</span> </li>
         })}
         </ul>
 
@@ -322,7 +353,7 @@ const ProductList = ({visible,setVisible}) => {
               style={{
               
                 background: "rgba(255, 255, 255, 0.5)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)", 
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", 
                 borderRadius: "10px",
                 display: "flex",
                 flexDirection: "column",
@@ -347,7 +378,9 @@ const ProductList = ({visible,setVisible}) => {
 
           flexGrow: "1",
           }}>
-        <span>{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
+        <span style={{fontWeight:"bold"}}
+        
+        >{obj.title.replaceAll("<b>","").replaceAll("</b>","").substr(0, maxLength) + (obj.title.length > maxLength ? "..." : "") }</span>
         <p style={{paddingBottom:"10px", paddingTop:"10px"}}> {obj.lprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
         <div
         style={{
@@ -366,7 +399,7 @@ const ProductList = ({visible,setVisible}) => {
           padding: "10px",
           cursor: "pointer",
           margin: "5px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+          // boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
 
         }}>
         보러가기</button>
@@ -379,7 +412,7 @@ const ProductList = ({visible,setVisible}) => {
           padding: "10px",
           cursor: "pointer",
           margin: "5px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
+          // boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
           
          }}
          >담아두기</button>
@@ -412,7 +445,7 @@ const ProductList = ({visible,setVisible}) => {
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)", // 그림자 효과
         transform:"translateY(-100%)",
         position:"absolute",
-        bottom:"14%",
+        bottom:"8%",
         right:"3%",
         zIndex:"0"
         }}
