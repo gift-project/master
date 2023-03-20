@@ -9,7 +9,6 @@ import { Translate } from "@mui/icons-material";
 
 import styles from "@/styles/index.module.css";
 
-import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -139,8 +138,7 @@ export default function Home() {
           </div>
         </div>
         
-        <motion.div className={modalOpen ? styles.modal : styles.modalHidden}
-         transition={modalTransition}>
+        <div className={modalOpen ? styles.modal : styles.modalHidden}>
          
           <button
             className={styles.modalCloseButton}
@@ -184,7 +182,7 @@ export default function Home() {
               회원가입
             </button>
           </form>
-        </motion.div>
+        </div>
       </div>
     </>
   );
