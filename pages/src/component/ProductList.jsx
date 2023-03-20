@@ -1,12 +1,7 @@
 import React,{useState,useContext,useEffect,useRef} from 'react'
 import axios from 'axios';
-
 import { TeamC } from '../Context';
-import { MyLocationRounded } from '@mui/icons-material';
-import { width } from '@mui/system';
 import { useRouter } from 'next/router';
-import { Zilla_Slab } from '@next/font/google';
-import zIndex from '@mui/material/styles/zIndex';
 
 
 
