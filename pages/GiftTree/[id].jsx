@@ -44,6 +44,15 @@ const GiftRoute = () => {
     dataGet();
   }, [])
 
+
+
+  useEffect(()=>{
+   
+     if (userLogin == false) {
+      router.push('/')
+  }
+  },[userLogin])
+
   return (
     <div className={styles.container}>
       <div className={styles.fixedWrapper}>

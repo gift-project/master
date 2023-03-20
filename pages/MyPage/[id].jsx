@@ -4,6 +4,7 @@ import NavBar from '../src/component/NavBar'
 import { TeamC } from '../src/Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router';
 
 const MyRoute = () => {
     const maxLength = 25;
@@ -11,13 +12,20 @@ const MyRoute = () => {
     const [giveData,setGiveData] = useState();
     const [takeData,setTakeData] = useState();
     const {userLogin, setUserLogin} = useContext(TeamC);
+    const router = useRouter();
 
 
     useEffect(()=>{
-      axios.get('/api/gift',{params:{userLogin:userLogin.UserID}}).then(res=>setTakeData(res.data))
+      axios.get('/api/gift',{params:{userLogin:userLogin.UserID}}).then(res=>{setTakeData(res.data);console.log(res.data)})
       ///////////////////
-      axios.get('/api/givepost',{params:{userLogin:userLogin.UserID}}).then(res=>setGiveData(res.data))
-    },[])
+      axios.get('/api/givepost',{params:{userLogin:userLogin.UserID}}).then(res=>{setGiveData(res.data);console.log(res.data)})
+
+       if (userLogin == false) {
+        router.push('/')
+    }
+    },[userLogin])
+
+   
 
     return (
     <div style={{width: "100%", height: "100%", position: "relative", paddingTop:"10%"}}>
@@ -32,7 +40,7 @@ const MyRoute = () => {
             <p style={{display: "block", width:200, height:200, margin: "0 auto", borderRadius: "50%",boxShadow: "0px 4px 10px 2px #ccc", border: "8px solid #fff"}}>
               <img style={{width: "100%", height: "100%", borderRadius: "50%"}} src="/img/Profile4.jpg"/>
             </p>
-            <p style={{marginTop: "20px", textAlign: "center", fontSize: "25px"}}>홍길동</p>
+            <p style={{marginTop: "20px", textAlign: "center", fontSize: "25px"}}>{userLogin?.NickName}</p>
           </div>
         </div>
         
@@ -65,7 +73,7 @@ const MyRoute = () => {
         <div style={{display:giftVisible?"block":"none", width:"100%"}}>
           <ul style={{display: "flex", flexDirection: "column", width: "90%", borderRadius: "10px", backgroundColor: "#fff",listStyle: "none",height: "40vh", overflow: "auto", padding: "12.5px 0", boxShadow: "0px 4px 10px 2px #ccc", border: "8px solid #fff"}}>
             {
-              takeData && takeData.map((obj,idx )=>{
+              giveData && giveData.map((obj,idx )=>{
                 return <li key={idx} style={{width: "100%",margin: "0"}}> 
                       <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center",width: "100%" ,padding: " 12.5px 10%"}}>
                         <img src={obj.image} alt="gift" style={{display: "block", width: "70px", height: "70px", margin: 0, borderRadius: "50%", backgroundColor: "orange"}}/>
