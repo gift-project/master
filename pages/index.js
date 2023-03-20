@@ -9,6 +9,8 @@ import { Translate } from "@mui/icons-material";
 
 import styles from "@/styles/index.module.css";
 
+import { motion } from "framer-motion";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -17,6 +19,17 @@ export default function Home() {
 
   function formLogin(e) {}
   const [modalOpen, setModalOpen] = useState(false);
+
+    const modalVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
+  const modalTransition = {
+    type: "spring",
+    stiffness: 200,
+    damping: 20,
+  };
 
   function formLogin(e) {
     e.preventDefault();
@@ -63,11 +76,11 @@ export default function Home() {
     <>
       <div className={styles.container}>
         {/* dddddddddddddd */}
-        <img
+        {/* <img
           src="./img/Balloon-removebg-preview.png"
           alt="image1"
           className={styles.image1}
-        />
+        /> */}
         <img
           src="/img/pinkSun-removebg-preview.png"
           alt="image2"
@@ -85,6 +98,7 @@ export default function Home() {
             위시리스트를 공유하고, 선물을 주고받아보세요
           </p>
         </div>
+
         <div className={styles.formContainer}>
           <form method="post" onSubmit={formLogin}>
             <div className={styles.inputWrapper}>
@@ -124,7 +138,10 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className={modalOpen ? styles.modal : styles.modalHidden}>
+        
+        <motion.div className={modalOpen ? styles.modal : styles.modalHidden}
+         transition={modalTransition}>
+         
           <button
             className={styles.modalCloseButton}
             onClick={() => {
@@ -136,12 +153,12 @@ export default function Home() {
 
           <form onSubmit={formSignUp} className={styles.modalForm}>
             <div className={styles.modalInputWrapper}>
-              <Form.Control placeholder="Id" name="signid" type="text" />
+              <Form.Control placeholder="아이디" name="signid" type="text" />
             </div>
 
             <div className={styles.modalInputWrapper}>
               <Form.Control
-                placeholder="Password"
+                placeholder="비밀번호"
                 name="signpasswords"
                 type="password"
               />
@@ -149,7 +166,7 @@ export default function Home() {
 
             <div className={styles.modalInputWrapper}>
               <Form.Control
-                placeholder="BirthDay"
+                placeholder="생일"
                 name="birthday"
                 type="text"
               />
@@ -157,17 +174,17 @@ export default function Home() {
 
             <div className={styles.modalInputWrapper}>
               <Form.Control
-                placeholder="Nickname"
+                placeholder="닉네임"
                 name="nickname"
                 type="text"
               />
             </div>
 
             <button className={styles.signupSubmitButton} type="submit">
-              Sign Up
+              회원가입
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </>
   );

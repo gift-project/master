@@ -79,7 +79,6 @@
     
     .loginButton {
     width: 98%;
-    height: 34px;
     background: #b2d3e1;
     color: #fff;
     border: none;
@@ -88,6 +87,7 @@
     cursor: pointer;
     margin: 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* height: 34px; */
     }
     
     .signupWrapper {
@@ -106,6 +106,8 @@
     background-color: transparent;
     font-size: 1rem;
     margin-left: 10px;
+    font-weight: bold;
+
     }
     
     .modal {
@@ -120,12 +122,12 @@
     overflow: auto;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     background: rgba(#f9e9ee, 0.5);
 
     z-index: 9999;
 
-
+    /* transition: opacity 0.3s ease-in-out; */
     }
     
     .modalHidden {
@@ -181,7 +183,6 @@
     
     .signupSubmitButton {
     width: 98%;
-    height: 34px;
     background: #b2d3e1;
     color: #fff;
     border: none;
@@ -189,6 +190,7 @@
     padding: 10px 0;
     cursor: pointer;
     margin: 5px;
+    /* height: 34px; */
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); */
     }
 
