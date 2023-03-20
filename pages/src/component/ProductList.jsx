@@ -182,13 +182,14 @@ const ProductList = ({visible,setVisible}) => {
         padding:"10px",
         // margin: "20px",
         width:"44%",
+        flexWrap:"wrap"
         // minWidth: "48%",
 
         
         }}>
       <img src={obj.image} style={{ 
-        width:"215px",
-        height:"177px",
+        width:"140",
+        height:"140px",
         borderRadius:"20px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
         marginBottom:"6px"
